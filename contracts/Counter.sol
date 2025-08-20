@@ -15,6 +15,9 @@ contract Counter {
     /// @param by The amount by which the counter was incremented
     event Incremented(uint256 by);
     
+    /// @notice Mapping to store user balances
+    mapping(address => uint256) public balances;
+    
     /// @notice Increment the counter by 1
     function increment() public {
         count++;
@@ -33,5 +36,30 @@ contract Counter {
     /// @return The current count
     function getCount() public view returns (uint256) {
         return count;
+    }
+    
+    // VULNERABILITY: Classic reentrancy attack vector
+    // This function allows external calls before updating state
+    function withdraw() public {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance to withdraw");
+        
+        // VULNERABILITY: External call before state update
+        // This allows reentrancy attacks - attackers can call withdraw() multiple times
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+        
+        // State update happens after external call - VULNERABLE!
+        balances[msg.sender] = 0;
+    }
+    
+    // Function to add balance (for testing the vulnerability)
+    function addBalance() public payable {
+        balances[msg.sender] += msg.value;
+    }
+    
+    // Function to get contract balance
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
     }
 }
