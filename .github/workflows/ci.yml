@@ -19,7 +19,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
@@ -41,7 +41,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
@@ -69,16 +69,16 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to Goerli Testnet
+      - name: Deploy to Sepolia Testnet
         env:
           INFURA_API_KEY: ${{ secrets.INFURA_API_KEY }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: npx hardhat run scripts/deploy.js --network goerli
+        run: npx hardhat run scripts/deploy.js --network sepolia
 
       - name: Verify Contract on Etherscan
         env:
@@ -86,4 +86,4 @@ jobs:
         run: |
           # This will be updated with the actual deployed contract address
           echo "Contract verification step - update with actual address"
-          # npx hardhat verify --network goerli DEPLOYED_CONTRACT_ADDRESS 
+          # npx hardhat verify --network sepolia DEPLOYED_CONTRACT_ADDRESS 
