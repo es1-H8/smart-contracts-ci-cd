@@ -18,8 +18,9 @@
     "lint": "solhint contracts/**/*.sol",
     "lint:fix": "solhint contracts/**/*.sol --fix",
     "security": "slither .",
+    "security:full": "hardhat run scripts/deploy.js --network localhost",
     "gas-report": "REPORT_GAS=true hardhat test",
-    "ci": "npm run compile && npm run test && npm run lint"
+    "ci": "npm run compile && npm run security && npm run lint"
   },
   "keywords": [
     "ethereum",
