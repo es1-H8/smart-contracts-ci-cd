@@ -40,10 +40,11 @@ async function runSecurityChecks() {
         totalWarnings += issues.length;
       }
       
-      // 2. Slither (Security Analysis)
+      // 2. Slither (Security Analysis) - Fixed to use proper Python command
       console.log('\n🛡️ Running Slither...');
       try {
-        const slitherOutput = execSync(`npx slither "${contractPath}" --print human-summary`, { encoding: 'utf8' });
+        // Use 'slither' command directly (Python tool) instead of npx
+        const slitherOutput = execSync(`slither "${contractPath}" --print human-summary`, { encoding: 'utf8' });
         console.log('✅ Slither passed');
       } catch (error) {
         const slitherIssues = error.stdout || error.stderr || '';

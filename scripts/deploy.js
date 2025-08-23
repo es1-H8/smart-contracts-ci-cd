@@ -45,7 +45,7 @@ async function runSecurityChecks() {
       // 2. Slither (Security Analysis)
       console.log('\n🛡️ Running Slither...');
       try {
-        const slitherOutput = execSync(`npx slither "${contractPath}" --json -`, { encoding: 'utf8' });
+        const slitherOutput = execSync(`slither "${contractPath}" --print human-summary`, { encoding: 'utf8' });
         console.log('✅ Slither passed');
       } catch (error) {
         const slitherIssues = error.stdout || error.stderr || '';
