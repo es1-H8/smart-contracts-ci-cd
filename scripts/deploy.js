@@ -47,6 +47,26 @@ async function runSecurityChecks() {
       try {
         const slitherOutput = execSync(`slither "${contractPath}" --print human-summary`, { encoding: 'utf8' });
         console.log('✅ Slither passed');
+        
+        // Parse Slither output for issues even if it doesn't exit with error
+        if (slitherOutput.includes('High') || slitherOutput.includes('Medium') || slitherOutput.includes('Low')) {
+          const lines = slitherOutput.split('\n');
+          const issueLines = lines.filter(line => 
+            line.includes('High') || line.includes('Medium') || line.includes('Low') || 
+            line.includes('Warning') || line.includes('Info')
+          );
+          
+          if (issueLines.length > 0) {
+            console.log(`⚠️ Slither found ${issueLines.length} security issues:`);
+            issueLines.forEach(issue => {
+              if (issue.trim()) {
+                console.log(`   ${issue.trim()}`);
+                allIssues.push({ contract: contractName, tool: 'Slither', issue: issue.trim() });
+                totalWarnings++;
+              }
+            });
+          }
+        }
       } catch (error) {
         const slitherIssues = error.stdout || error.stderr || '';
         const issues = slitherIssues.split('\n').filter(line => line.trim());
@@ -70,14 +90,44 @@ async function runSecurityChecks() {
           warnings.forEach(warning => {
             console.log(`   ${warning.trim()}`);
             allIssues.push({ contract: contractName, tool: 'Compiler', issue: warning.trim() });
+            totalWarnings++;
           });
-          totalWarnings += warnings.length;
         } else {
           console.log('✅ No compiler warnings');
         }
       } catch (error) {
         console.log('⚠️ Compilation issues found');
         totalErrors++;
+      }
+      
+      // 4. Additional Security Checks
+      console.log('\n🔍 Running Additional Security Checks...');
+      
+      // Check for common vulnerabilities in the contract code
+      const contractContent = fs.readFileSync(contractPath, 'utf8');
+      
+      // Check for reentrancy vulnerabilities
+      if (contractContent.includes('call(') || contractContent.includes('delegatecall(')) {
+        const reentrancyIssue = 'Potential reentrancy vulnerability - external calls detected';
+        console.log(`   ⚠️ ${reentrancyIssue}`);
+        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: reentrancyIssue });
+        totalWarnings++;
+      }
+      
+      // Check for unsafe math operations
+      if (contractContent.includes('+') || contractContent.includes('-') || contractContent.includes('*') || contractContent.includes('/')) {
+        const mathIssue = 'Potential unsafe math operations - consider using SafeMath or Solidity 0.8+';
+        console.log(`   ⚠️ ${mathIssue}`);
+        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: mathIssue });
+        totalWarnings++;
+      }
+      
+      // Check for access control issues
+      if (contractContent.includes('onlyOwner') && !contractContent.includes('Ownable')) {
+        const accessIssue = 'Access control modifier used but Ownable contract not imported';
+        console.log(`   ⚠️ ${accessIssue}`);
+        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: accessIssue });
+        totalWarnings++;
       }
       
     } catch (error) {
