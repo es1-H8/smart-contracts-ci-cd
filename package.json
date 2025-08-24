@@ -20,6 +20,7 @@
     "security": "slither .",
     "security:full": "hardhat run scripts/deploy.js --network localhost",
     "security:ci": "node scripts/security-only.js",
+    "security:report": "node scripts/view-security-report.js",
     "gas-report": "REPORT_GAS=true hardhat test",
     "ci": "npm run compile && npm run security:ci && npm run lint"
   },
