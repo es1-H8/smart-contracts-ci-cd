@@ -1,0 +1,8 @@
+SECURITY ANALYSIS REPORT
+Generated: 2025-08-24T21:11:09.076Z
+Total Contracts: 2
+Total Warnings Found: 2
+Total Errors Found: 0
+
+1. [Unknown] Slither: 'slither' is not recognized as an internal or external command, (Line N/A)
+2. [Unknown] Slither: operable program or batch file. (Line N/A)

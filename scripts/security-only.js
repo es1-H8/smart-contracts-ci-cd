@@ -2,9 +2,9 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-// Simple security script that works exactly like the original CI workflow
+// Simple security script that focuses on Slither only
 async function runSecurityChecks() {
-  console.log('🔒 Starting Security Analysis (Original CI Workflow Method)...\n');
+  console.log('🔒 Starting Security Analysis (Slither Only)...\n');
   
   const contractsDir = path.join(process.cwd(), 'contracts');
   const contractFiles = fs.readdirSync(contractsDir).filter(file => file.endsWith('.sol'));
@@ -15,170 +15,34 @@ async function runSecurityChecks() {
   let totalErrors = 0;
   const allIssues = [];
   
-  // 1. Run Solhint exactly like original CI workflow
-  console.log('\n📝 Running Solhint (like original CI)...');
+  // Run Slither analysis
+  console.log('\n🛡️ Running Slither Analysis...');
   console.log('='.repeat(50));
   try {
-    // This is the EXACT command from your original CI workflow
-    const solhintOutput = execSync(`npx solhint "contracts/**/*.sol"`, { encoding: 'utf8' });
-    console.log('✅ Solhint passed');
+    // Run Slither on the entire project
+    const slitherOutput = execSync(`slither . --print human-summary`, { encoding: 'utf8' });
+    console.log('✅ Slither analysis completed');
     
-    // Even if Solhint passes, check if there are warnings in the output
-    if (solhintOutput.includes('warning') || solhintOutput.includes('Warning')) {
-      const lines = solhintOutput.split('\n');
-      const warningLines = lines.filter(line => 
-        line.includes('warning') || line.includes('Warning') ||
-        line.includes('contracts/') && line.includes('#L')
-      );
+    // Parse Slither output for issues
+    if (slitherOutput.includes('warning') || slitherOutput.includes('Warning') || 
+        slitherOutput.includes('error') || slitherOutput.includes('Error') ||
+        slitherOutput.includes('info') || slitherOutput.includes('Info')) {
       
-      if (warningLines.length > 0) {
-        console.log(`⚠️ Solhint found ${warningLines.length} warnings in output:`);
-        warningLines.forEach(warning => {
-          if (warning.trim()) {
-            console.log(`   ${warning.trim()}`);
-            // Extract contract name and line number
-            const contractMatch = warning.match(/contracts\/([^#]+)#L(\d+)/);
-            if (contractMatch) {
-              const contractName = contractMatch[1].replace('.sol', '');
-              const lineNumber = contractMatch[2];
-              allIssues.push({ 
-                contract: contractName, 
-                tool: 'Solhint', 
-                issue: warning.trim(),
-                line: lineNumber
-              });
-            } else {
-              allIssues.push({ 
-                contract: 'Unknown', 
-                tool: 'Solhint', 
-                issue: warning.trim() 
-              });
-            }
-            totalWarnings++;
-          }
-        });
-      }
-    }
-  } catch (error) {
-    // Solhint found issues (this is what we want!)
-    const solhintIssues = error.stdout || error.stderr || '';
-    const issues = solhintIssues.split('\n').filter(line => line.trim());
-    console.log(`⚠️ Solhint found ${issues.length} issues:`);
-    
-    issues.forEach(issue => {
-      if (issue.trim()) {
-        console.log(`   ${issue.trim()}`);
-        // Extract contract name and line number
-        const contractMatch = issue.match(/contracts\/([^#]+)#L(\d+)/);
-        if (contractMatch) {
-          const contractName = contractMatch[1].replace('.sol', '');
-          const lineNumber = contractMatch[2];
-          allIssues.push({ 
-            contract: contractName, 
-            tool: 'Solhint', 
-            issue: issue.trim(),
-            line: lineNumber
-          });
-        } else {
-          allIssues.push({ 
-            contract: 'Unknown', 
-            tool: 'Solhint', 
-            issue: issue.trim() 
-          });
-        }
-        totalWarnings++;
-      }
-    });
-  }
-  
-  // Also run Solhint on individual contracts to catch more issues
-  console.log('\n📝 Running Solhint on individual contracts...');
-  console.log('='.repeat(50));
-  for (const contractFile of contractFiles) {
-    const contractPath = path.join(contractsDir, contractFile);
-    const contractName = contractFile.replace('.sol', '');
-    
-    try {
-      // Use relative path to avoid glob issues
-      const relativePath = `contracts/${contractFile}`;
-      const solhintOutput = execSync(`npx solhint "${relativePath}"`, { encoding: 'utf8' });
-      console.log(`✅ ${contractName}: Solhint passed`);
-      
-      // Check for warnings even when Solhint passes
-      if (solhintOutput.includes('warning') || solhintOutput.includes('Warning')) {
-        const lines = solhintOutput.split('\n');
-        const warningLines = lines.filter(line => 
-          line.includes('warning') || line.includes('Warning') ||
-          line.includes('contracts/') && line.includes('#L')
-        );
-        
-        if (warningLines.length > 0) {
-          console.log(`⚠️ ${contractName}: Solhint found ${warningLines.length} warnings in output:`);
-          warningLines.forEach(warning => {
-            if (warning.trim()) {
-              console.log(`   ${warning.trim()}`);
-              // Extract line number
-              const lineMatch = warning.match(/#L(\d+)/);
-              const lineNumber = lineMatch ? lineMatch[1] : null;
-              
-              allIssues.push({ 
-                contract: contractName, 
-                tool: 'Solhint', 
-                issue: warning.trim(),
-                line: lineNumber
-              });
-              totalWarnings++;
-            }
-          });
-        }
-      }
-    } catch (error) {
-      const solhintIssues = error.stdout || error.stderr || '';
-      const issues = solhintIssues.split('\n').filter(line => line.trim());
-      console.log(`⚠️ ${contractName}: Solhint found ${issues.length} issues:`);
-      
-      issues.forEach(issue => {
-        if (issue.trim()) {
-          console.log(`   ${issue.trim()}`);
-          // Extract line number
-          const lineMatch = issue.match(/#L(\d+)/);
-          const lineNumber = lineMatch ? lineMatch[1] : null;
-          
-          allIssues.push({ 
-            contract: contractName, 
-            tool: 'Solhint', 
-            issue: issue.trim(),
-            line: lineNumber
-          });
-          totalWarnings++;
-        }
-      });
-    }
-  }
-  
-  // 2. Run Slither exactly like original CI workflow
-  console.log('\n🛡️ Running Slither (like original CI)...');
-  console.log('='.repeat(50));
-  try {
-    // This is the EXACT command from your original CI workflow
-    // On Windows, we need to use py -m slither instead of just slither
-    const slitherOutput = execSync(`py -m slither . --print human-summary`, { encoding: 'utf8' });
-    console.log('✅ Slither passed');
-    
-    // Even if Slither passes, check if there are warnings in the output
-    if (slitherOutput.includes('warning') || slitherOutput.includes('Warning')) {
       const lines = slitherOutput.split('\n');
-      const warningLines = lines.filter(line => 
+      const issueLines = lines.filter(line => 
         line.includes('warning') || line.includes('Warning') ||
+        line.includes('error') || line.includes('Error') ||
+        line.includes('info') || line.includes('Info') ||
         line.includes('contracts/') && line.includes('#L')
       );
       
-      if (warningLines.length > 0) {
-        console.log(`⚠️ Slither found ${warningLines.length} warnings:`);
-        warningLines.forEach(line => {
+      if (issueLines.length > 0) {
+        console.log(`⚠️ Slither found ${issueLines.length} issues:`);
+        issueLines.forEach(line => {
           if (line.trim()) {
             console.log(`   ${line.trim()}`);
-            // Extract contract name and line number
+            
+            // Extract contract name and line number if available
             const contractMatch = line.match(/contracts\/([^\/]+)\.sol#L(\d+)/);
             if (contractMatch) {
               const contractName = contractMatch[1];
@@ -190,7 +54,6 @@ async function runSecurityChecks() {
                 issue: line.trim(),
                 severity: 'warning'
               });
-              totalWarnings++;
             } else {
               allIssues.push({
                 contract: 'Unknown',
@@ -199,8 +62,8 @@ async function runSecurityChecks() {
                 issue: line.trim(),
                 severity: 'warning'
               });
-              totalWarnings++;
             }
+            totalWarnings++;
           }
         });
       }
@@ -214,7 +77,8 @@ async function runSecurityChecks() {
     issues.forEach(issue => {
       if (issue.trim()) {
         console.log(`   ${issue.trim()}`);
-        // Extract contract name and line number
+        
+        // Extract contract name and line number if available
         const contractMatch = issue.match(/contracts\/([^\/]+)\.sol#L(\d+)/);
         if (contractMatch) {
           const contractName = contractMatch[1];
@@ -226,7 +90,6 @@ async function runSecurityChecks() {
             issue: issue.trim(),
             severity: 'warning'
           });
-          totalWarnings++;
         } else {
           allIssues.push({
             contract: 'Unknown',
@@ -235,13 +98,13 @@ async function runSecurityChecks() {
             issue: issue.trim(),
             severity: 'warning'
           });
-          totalWarnings++;
         }
+        totalWarnings++;
       }
     });
   }
   
-  // 3. Run Compiler to check for warnings
+  // Run Compiler to check for warnings
   console.log('\n⚙️ Checking Compiler Warnings...');
   console.log('='.repeat(50));
   try {

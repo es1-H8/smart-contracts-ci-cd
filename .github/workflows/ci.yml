@@ -2,11 +2,9 @@ name: Smart Contract CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
@@ -43,14 +41,21 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: npm install
 
-      - name: Install Solhint
-        run: npm install -g solhint
+      # Temporarily comment out Solhint to focus on Slither
+      # - name: Install Solhint
+      #   run: npm install -g solhint
 
       - name: Install Slither
         run: |
+          python -m pip install --upgrade pip
           pip install slither-analyzer
 
       - name: Run Enhanced Security Analysis

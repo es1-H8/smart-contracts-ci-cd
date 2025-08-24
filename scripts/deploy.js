@@ -323,3 +323,6 @@ main()
     console.error("💥 Deployment failed:", error);
     process.exit(1);
   }); 
+
+  //so ur saying in the github the slither would work but right now when i pushed the workflow on github i go this rror regarding the slither in the report 1081. [BoredApe] Solhint: ✖ 439 problems (0 errors, 439 warnings)
+//1082. [Unknown] Slither: /bin/sh: 1: py: not found (Line N/A)
