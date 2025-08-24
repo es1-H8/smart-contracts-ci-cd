@@ -161,38 +161,49 @@ async function runSecurityChecks() {
   console.log('='.repeat(50));
   try {
     // This is the EXACT command from your original CI workflow
-    const slitherOutput = execSync(`slither . --print human-summary`, { encoding: 'utf8' });
+    // On Windows, we need to use py -m slither instead of just slither
+    const slitherOutput = execSync(`py -m slither . --print human-summary`, { encoding: 'utf8' });
     console.log('✅ Slither passed');
     
-    // Parse Slither output for issues
-    const lines = slitherOutput.split('\n');
-    const issueLines = lines.filter(line => 
-      line.includes('High') || line.includes('Medium') || line.includes('Low') || 
-      line.includes('Warning') || line.includes('Info') || line.includes('GC:') ||
-      line.includes('contracts/')
-    );
-    
-    if (issueLines.length > 0) {
-      console.log(`⚠️ Slither found ${issueLines.length} security issues:`);
-      issueLines.forEach(issue => {
-        if (issue.trim()) {
-          console.log(`   ${issue.trim()}`);
-          // Try to extract contract name
-          let contractName = 'Unknown';
-          if (issue.includes('contracts/')) {
-            const contractMatch = issue.match(/contracts\/([^#]+)/);
+    // Even if Slither passes, check if there are warnings in the output
+    if (slitherOutput.includes('warning') || slitherOutput.includes('Warning')) {
+      const lines = slitherOutput.split('\n');
+      const warningLines = lines.filter(line => 
+        line.includes('warning') || line.includes('Warning') ||
+        line.includes('contracts/') && line.includes('#L')
+      );
+      
+      if (warningLines.length > 0) {
+        console.log(`⚠️ Slither found ${warningLines.length} warnings:`);
+        warningLines.forEach(line => {
+          if (line.trim()) {
+            console.log(`   ${line.trim()}`);
+            // Extract contract name and line number
+            const contractMatch = line.match(/contracts\/([^\/]+)\.sol#L(\d+)/);
             if (contractMatch) {
-              contractName = contractMatch[1].replace('.sol', '');
+              const contractName = contractMatch[1];
+              const lineNumber = contractMatch[2];
+              allIssues.push({
+                contract: contractName,
+                tool: 'Slither',
+                line: lineNumber,
+                issue: line.trim(),
+                severity: 'warning'
+              });
+              totalWarnings++;
+            } else {
+              allIssues.push({
+                contract: 'Unknown',
+                tool: 'Slither',
+                line: 'N/A',
+                issue: line.trim(),
+                severity: 'warning'
+              });
+              totalWarnings++;
             }
           }
-          allIssues.push({ 
-            contract: contractName, 
-            tool: 'Slither', 
-            issue: issue.trim() 
-          });
-          totalWarnings++;
-        }
-      });
+        });
+      }
     }
   } catch (error) {
     // Slither found issues (this is what we want!)
@@ -203,20 +214,29 @@ async function runSecurityChecks() {
     issues.forEach(issue => {
       if (issue.trim()) {
         console.log(`   ${issue.trim()}`);
-        // Try to extract contract name
-        let contractName = 'Unknown';
-        if (issue.includes('contracts/')) {
-          const contractMatch = issue.match(/contracts\/([^#]+)/);
-          if (contractMatch) {
-            contractName = contractMatch[1].replace('.sol', '');
-          }
+        // Extract contract name and line number
+        const contractMatch = issue.match(/contracts\/([^\/]+)\.sol#L(\d+)/);
+        if (contractMatch) {
+          const contractName = contractMatch[1];
+          const lineNumber = contractMatch[2];
+          allIssues.push({
+            contract: contractName,
+            tool: 'Slither',
+            line: lineNumber,
+            issue: issue.trim(),
+            severity: 'warning'
+          });
+          totalWarnings++;
+        } else {
+          allIssues.push({
+            contract: 'Unknown',
+            tool: 'Slither',
+            line: 'N/A',
+            issue: issue.trim(),
+            severity: 'warning'
+          });
+          totalWarnings++;
         }
-        allIssues.push({ 
-          contract: contractName, 
-          tool: 'Slither', 
-          issue: issue.trim() 
-        });
-        totalWarnings++;
       }
     });
   }
