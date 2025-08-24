@@ -22,11 +22,11 @@ async function runSecurityChecks() {
   try {
     // First check if slither is available
     try {
-      execSync('slither --version', { stdio: 'ignore' });
+      execSync('py -m slither --version', { stdio: 'ignore' });
       console.log('✅ Slither is available');
     } catch (error) {
       console.log('❌ Slither is not installed or not available in PATH');
-      console.log('💡 To install Slither: pip install slither-analyzer');
+      console.log('💡 To install Slither: py -m pip install slither-analyzer');
       
       allIssues.push({
         contract: 'System',
@@ -42,74 +42,87 @@ async function runSecurityChecks() {
       process.exit(1);
     }
     
-    // Run Slither with human-readable output (this was working before)
-    console.log('Running: slither . --print human-summary');
-    const slitherOutput = execSync('slither . --print human-summary', { 
-      encoding: 'utf8',
-      timeout: 60000 // 60 second timeout
-    });
+    // Run Slither with checklist output (this contains the actual vulnerability details)
+    console.log('Running: py -m slither . --checklist');
     
-    console.log('✅ Slither analysis completed successfully');
+    let slitherOutput;
+    let slitherExitCode = 0;
     
-    // Parse the human-readable output to extract issues
+    try {
+      // Try to run Slither normally
+      slitherOutput = execSync('py -m slither . --checklist', { 
+        encoding: 'utf8',
+        timeout: 60000 // 60 second timeout
+      });
+      console.log('✅ Slither analysis completed successfully');
+    } catch (error) {
+      // Slither returns exit code 1 when vulnerabilities are found (this is correct behavior)
+      if (error.status === 1 && error.stdout) {
+        console.log('✅ Slither analysis completed - vulnerabilities found (exit code 1 is expected)');
+        slitherOutput = error.stdout;
+        slitherExitCode = 1; // This is expected when vulnerabilities are found
+      } else {
+        console.log('❌ Slither analysis failed');
+        console.log('Error:', error.message);
+        throw error;
+      }
+    }
+    
+    // Simple parsing: just look for lines with contract references and line numbers
     const lines = slitherOutput.split('\n');
     let issueCount = 0;
     
     lines.forEach((line, index) => {
-      if (line.trim() && (
-        line.includes('High:') || 
-        line.includes('Medium:') || 
-        line.includes('Low:') ||
-        line.includes('Optimization:') ||
-        line.includes('Informational:') ||
-        line.includes('contracts/') ||
-        line.includes('BoredApe') ||
-        line.includes('ArbitrageFlashLoaner')
-      )) {
-        console.log(`   Line ${index + 1}: ${line.trim()}`);
+      const trimmedLine = line.trim();
+      
+      // Look for lines that contain contract references with line numbers
+      if (trimmedLine.includes('contracts/') && trimmedLine.includes('#L')) {
+        console.log(`   Line ${index + 1}: ${trimmedLine}`);
         
-        // Extract contract name and line number if available
-        const contractMatch = line.match(/contracts\/([^\/\s]+)\.sol#L(\d+)/);
+        // Extract contract name and line number
+        const contractMatch = trimmedLine.match(/contracts\/([^\/\s]+)\.sol#L(\d+)/);
         if (contractMatch) {
           const contractName = contractMatch[1];
           const lineNumber = contractMatch[2];
           
-          // Determine severity from the line content
+          // Determine severity based on content
           let severity = 'info';
-          if (line.includes('High:')) severity = 'high';
-          else if (line.includes('Medium:')) severity = 'medium';
-          else if (line.includes('Low:')) severity = 'low';
-          else if (line.includes('Optimization:')) severity = 'optimization';
-          else if (line.includes('Informational:')) severity = 'info';
+          if (trimmedLine.includes('abi.encodePacked()')) severity = 'high';
+          else if (trimmedLine.includes('Reentrancy in')) severity = 'medium';
+          else if (trimmedLine.includes('external calls inside a loop')) severity = 'low';
+          else if (trimmedLine.includes('should be constant') || trimmedLine.includes('should be immutable')) severity = 'optimization';
+          else if (trimmedLine.includes('lacks a zero-check')) severity = 'low';
+          else if (trimmedLine.includes('shadows:')) severity = 'low';
+          else if (trimmedLine.includes('different versions of Solidity')) severity = 'info';
+          else if (trimmedLine.includes('costly operations inside a loop')) severity = 'info';
+          else if (trimmedLine.includes('is never used and should be removed')) severity = 'info';
+          else if (trimmedLine.includes('contains known severe issues')) severity = 'info';
+          else if (trimmedLine.includes('Low level call')) severity = 'info';
+          else if (trimmedLine.includes('is not in mixedCase')) severity = 'info';
+          else if (trimmedLine.includes('uses literals with too many digits')) severity = 'info';
           
           allIssues.push({
             contract: contractName,
             tool: 'Slither',
             line: lineNumber,
-            issue: line.trim(),
+            issue: trimmedLine,
             severity: severity
           });
-        } else {
-          // For summary lines (High: X, Medium: Y, etc.)
-          if (line.includes('High:') || line.includes('Medium:') || line.includes('Low:') || 
-              line.includes('Optimization:') || line.includes('Informational:')) {
-            allIssues.push({
-              contract: 'Summary',
-              tool: 'Slither',
-              line: 'N/A',
-              issue: line.trim(),
-              severity: 'summary'
-            });
-          } else {
-            allIssues.push({
-              contract: 'Unknown',
-              tool: 'Slither',
-              line: 'N/A',
-              issue: line.trim(),
-              severity: 'info'
-            });
-          }
+          issueCount++;
+          totalWarnings++;
         }
+      }
+      // Also capture summary information
+      else if (trimmedLine.includes('INFO:Slither:') && trimmedLine.includes('analyzed') && trimmedLine.includes('result(s) found')) {
+        console.log(`   Line ${index + 1}: ${trimmedLine}`);
+        
+        allIssues.push({
+          contract: 'Summary',
+          tool: 'Slither',
+          line: 'N/A',
+          issue: trimmedLine,
+          severity: 'summary'
+        });
         issueCount++;
         totalWarnings++;
       }
@@ -119,6 +132,11 @@ async function runSecurityChecks() {
       console.log(`\n⚠️ Slither found ${issueCount} issues in output`);
     } else {
       console.log('\n✅ Slither found no issues in output');
+    }
+    
+    // If Slither found vulnerabilities (exit code 1), that's expected behavior
+    if (slitherExitCode === 1) {
+      console.log('ℹ️ Slither exit code 1 is expected when vulnerabilities are found');
     }
     
   } catch (error) {
