@@ -1,0 +1,1089 @@
+SECURITY ANALYSIS REPORT
+Generated: 2025-08-24T00:36:37.549Z
+Total Contracts: 2
+Total Warnings Found: 1083
+Total Errors Found: 0
+
+1. [Unknown] Solhint: 2:1   warning  Found more than One contract per file. 2 contracts found!                                                                                                        one-contract-per-file
+2. [Unknown] Solhint: 2:1   warning  Compiler version ^0.8.19 does not satisfy the ^0.8.24 semver requirement                                                                                         compiler-version
+3. [Unknown] Solhint: 5:1   warning  Missing @title tag in contract 'ReentrancyGuard'                                                                                                                 use-natspec
+4. [Unknown] Solhint: 5:1   warning  Missing @author tag in contract 'ReentrancyGuard'                                                                                                                use-natspec
+5. [Unknown] Solhint: 5:1   warning  Missing @notice tag in contract 'ReentrancyGuard'                                                                                                                use-natspec
+6. [Unknown] Solhint: 10:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+7. [Unknown] Solhint: 20:5   warning  Missing @notice tag in function '_nonReentrantBefore'                                                                                                            use-natspec
+8. [Unknown] Solhint: 21:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+9. [Unknown] Solhint: 25:5   warning  Missing @notice tag in function '_nonReentrantAfter'                                                                                                             use-natspec
+10. [Unknown] Solhint: 31:1   warning  Missing @title tag in contract 'IERC20'                                                                                                                          use-natspec
+11. [Unknown] Solhint: 31:1   warning  Missing @author tag in contract 'IERC20'                                                                                                                         use-natspec
+12. [Unknown] Solhint: 31:1   warning  Missing @notice tag in contract 'IERC20'                                                                                                                         use-natspec
+13. [Unknown] Solhint: 32:5   warning  Missing @notice tag in event 'Transfer'                                                                                                                          use-natspec
+14. [Unknown] Solhint: 32:5   warning  Missing @param tag in event 'Transfer'                                                                                                                           use-natspec
+15. [Unknown] Solhint: 32:5   warning  Mismatch in @param names for event 'Transfer'. Expected: [from, to, value], Found: []                                                                            use-natspec
+16. [Unknown] Solhint: 32:5   warning  GC: [value] on Event [Transfer] could be Indexed                                                                                                                 gas-indexed-events
+17. [Unknown] Solhint: 33:5   warning  Missing @notice tag in event 'Approval'                                                                                                                          use-natspec
+18. [Unknown] Solhint: 33:5   warning  Missing @param tag in event 'Approval'                                                                                                                           use-natspec
+19. [Unknown] Solhint: 33:5   warning  Mismatch in @param names for event 'Approval'. Expected: [owner, spender, value], Found: []                                                                      use-natspec
+20. [Unknown] Solhint: 33:5   warning  GC: [value] on Event [Approval] could be Indexed                                                                                                                 gas-indexed-events
+21. [Unknown] Solhint: 34:5   warning  Missing @notice tag in function 'totalSupply'                                                                                                                    use-natspec
+22. [Unknown] Solhint: 34:5   warning  Missing @return tag in function 'totalSupply'                                                                                                                    use-natspec
+23. [Unknown] Solhint: 34:5   warning  Mismatch in @return count for function 'totalSupply'. Expected: 1, Found: 0                                                                                      use-natspec
+24. [Unknown] Solhint: 35:5   warning  Missing @notice tag in function 'balanceOf'                                                                                                                      use-natspec
+25. [Unknown] Solhint: 35:5   warning  Missing @param tag in function 'balanceOf'                                                                                                                       use-natspec
+26. [Unknown] Solhint: 35:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [account], Found: []                                                                                use-natspec
+27. [Unknown] Solhint: 35:5   warning  Missing @return tag in function 'balanceOf'                                                                                                                      use-natspec
+28. [Unknown] Solhint: 35:5   warning  Mismatch in @return count for function 'balanceOf'. Expected: 1, Found: 0                                                                                        use-natspec
+29. [Unknown] Solhint: 36:5   warning  Missing @notice tag in function 'transfer'                                                                                                                       use-natspec
+30. [Unknown] Solhint: 36:5   warning  Missing @param tag in function 'transfer'                                                                                                                        use-natspec
+31. [Unknown] Solhint: 36:5   warning  Mismatch in @param names for function 'transfer'. Expected: [to, amount], Found: []                                                                              use-natspec
+32. [Unknown] Solhint: 36:5   warning  Missing @return tag in function 'transfer'                                                                                                                       use-natspec
+33. [Unknown] Solhint: 36:5   warning  Mismatch in @return count for function 'transfer'. Expected: 1, Found: 0                                                                                         use-natspec
+34. [Unknown] Solhint: 37:5   warning  Missing @notice tag in function 'allowance'                                                                                                                      use-natspec
+35. [Unknown] Solhint: 37:5   warning  Missing @param tag in function 'allowance'                                                                                                                       use-natspec
+36. [Unknown] Solhint: 37:5   warning  Mismatch in @param names for function 'allowance'. Expected: [owner, spender], Found: []                                                                         use-natspec
+37. [Unknown] Solhint: 37:5   warning  Missing @return tag in function 'allowance'                                                                                                                      use-natspec
+38. [Unknown] Solhint: 37:5   warning  Mismatch in @return count for function 'allowance'. Expected: 1, Found: 0                                                                                        use-natspec
+39. [Unknown] Solhint: 38:5   warning  Missing @notice tag in function 'approve'                                                                                                                        use-natspec
+40. [Unknown] Solhint: 38:5   warning  Missing @param tag in function 'approve'                                                                                                                         use-natspec
+41. [Unknown] Solhint: 38:5   warning  Mismatch in @param names for function 'approve'. Expected: [spender, amount], Found: []                                                                          use-natspec
+42. [Unknown] Solhint: 38:5   warning  Missing @return tag in function 'approve'                                                                                                                        use-natspec
+43. [Unknown] Solhint: 38:5   warning  Mismatch in @return count for function 'approve'. Expected: 1, Found: 0                                                                                          use-natspec
+44. [Unknown] Solhint: 39:5   warning  Missing @notice tag in function 'transferFrom'                                                                                                                   use-natspec
+45. [Unknown] Solhint: 39:5   warning  Missing @param tag in function 'transferFrom'                                                                                                                    use-natspec
+46. [Unknown] Solhint: 39:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, amount], Found: []                                                                    use-natspec
+47. [Unknown] Solhint: 39:5   warning  Missing @return tag in function 'transferFrom'                                                                                                                   use-natspec
+48. [Unknown] Solhint: 39:5   warning  Mismatch in @return count for function 'transferFrom'. Expected: 1, Found: 0                                                                                     use-natspec
+49. [Unknown] Solhint: 43:1   warning  Missing @title tag in contract 'IAavePool'                                                                                                                       use-natspec
+50. [Unknown] Solhint: 43:1   warning  Missing @author tag in contract 'IAavePool'                                                                                                                      use-natspec
+51. [Unknown] Solhint: 43:1   warning  Missing @notice tag in contract 'IAavePool'                                                                                                                      use-natspec
+52. [Unknown] Solhint: 44:5   warning  Missing @notice tag in function 'flashLoan'                                                                                                                      use-natspec
+53. [Unknown] Solhint: 44:5   warning  Missing @param tag in function 'flashLoan'                                                                                                                       use-natspec
+54. [Unknown] Solhint: 44:5   warning  Mismatch in @param names for function 'flashLoan'. Expected: [receiverAddress, assets, amounts, interestRateModes, onBehalfOf, params, referralCode], Found: []  use-natspec
+55. [Unknown] Solhint: 56:1   warning  Missing @title tag in contract 'ArbitrageFlashLoaner'                                                                                                            use-natspec
+56. [Unknown] Solhint: 56:1   warning  Missing @author tag in contract 'ArbitrageFlashLoaner'                                                                                                           use-natspec
+57. [Unknown] Solhint: 56:1   warning  Missing @notice tag in contract 'ArbitrageFlashLoaner'                                                                                                           use-natspec
+58. [Unknown] Solhint: 57:5   warning  Missing @notice tag in variable 'owner'                                                                                                                          use-natspec
+59. [Unknown] Solhint: 59:5   warning  Missing @notice tag in event 'ArbitrageExecuted'                                                                                                                 use-natspec
+60. [Unknown] Solhint: 59:5   warning  Missing @param tag in event 'ArbitrageExecuted'                                                                                                                  use-natspec
+61. [Unknown] Solhint: 59:5   warning  Mismatch in @param names for event 'ArbitrageExecuted'. Expected: [tokenIn, tokenOut, amount], Found: []                                                         use-natspec
+62. [Unknown] Solhint: 59:5   warning  GC: [amount] on Event [ArbitrageExecuted] could be Indexed                                                                                                       gas-indexed-events
+63. [Unknown] Solhint: 60:5   warning  Missing @notice tag in event 'OwnerUpdated'                                                                                                                      use-natspec
+64. [Unknown] Solhint: 60:5   warning  Missing @param tag in event 'OwnerUpdated'                                                                                                                       use-natspec
+65. [Unknown] Solhint: 60:5   warning  Mismatch in @param names for event 'OwnerUpdated'. Expected: [oldOwner, newOwner], Found: []                                                                     use-natspec
+66. [Unknown] Solhint: 61:5   warning  Missing @notice tag in event 'EtherWithdrawn'                                                                                                                    use-natspec
+67. [Unknown] Solhint: 61:5   warning  Missing @param tag in event 'EtherWithdrawn'                                                                                                                     use-natspec
+68. [Unknown] Solhint: 61:5   warning  Mismatch in @param names for event 'EtherWithdrawn'. Expected: [owner, amount], Found: []                                                                        use-natspec
+69. [Unknown] Solhint: 61:5   warning  GC: [amount] on Event [EtherWithdrawn] could be Indexed                                                                                                          gas-indexed-events
+70. [Unknown] Solhint: 62:5   warning  Missing @notice tag in event 'TokenWithdrawn'                                                                                                                    use-natspec
+71. [Unknown] Solhint: 62:5   warning  Missing @param tag in event 'TokenWithdrawn'                                                                                                                     use-natspec
+72. [Unknown] Solhint: 62:5   warning  Mismatch in @param names for event 'TokenWithdrawn'. Expected: [owner, token, amount], Found: []                                                                 use-natspec
+73. [Unknown] Solhint: 62:5   warning  GC: [amount] on Event [TokenWithdrawn] could be Indexed                                                                                                          gas-indexed-events
+74. [Unknown] Solhint: 64:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+75. [Unknown] Solhint: 69:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+76. [Unknown] Solhint: 73:5   warning  Missing @notice tag in function 'executeArbitrage'                                                                                                               use-natspec
+77. [Unknown] Solhint: 73:5   warning  Missing @param tag in function 'executeArbitrage'                                                                                                                use-natspec
+78. [Unknown] Solhint: 73:5   warning  Mismatch in @param names for function 'executeArbitrage'. Expected: [tokenIn, tokenOut, amount], Found: []                                                       use-natspec
+79. [Unknown] Solhint: 78:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+80. [Unknown] Solhint: 107:5   warning  Missing @notice tag in function 'executeOperation'                                                                                                               use-natspec
+81. [Unknown] Solhint: 107:5   warning  Missing @param tag in function 'executeOperation'                                                                                                                use-natspec
+82. [Unknown] Solhint: 107:5   warning  Mismatch in @param count for function 'executeOperation'. Expected: 5, Found: 0                                                                                  use-natspec
+83. [Unknown] Solhint: 107:5   warning  Missing @return tag in function 'executeOperation'                                                                                                               use-natspec
+84. [Unknown] Solhint: 107:5   warning  Mismatch in @return count for function 'executeOperation'. Expected: 1, Found: 0                                                                                 use-natspec
+85. [Unknown] Solhint: 114:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+86. [Unknown] Solhint: 117:14  warning  Rule is set with explicit type [var/s: uint]                                                                                                                     explicit-types
+87. [Unknown] Solhint: 117:45  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                                                               gas-increment-by-one
+88. [Unknown] Solhint: 119:13  warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+89. [Unknown] Solhint: 128:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+90. [Unknown] Solhint: 130:5   warning  Missing @notice tag in function 'setOwner'                                                                                                                       use-natspec
+91. [Unknown] Solhint: 130:5   warning  Missing @param tag in function 'setOwner'                                                                                                                        use-natspec
+92. [Unknown] Solhint: 130:5   warning  Mismatch in @param names for function 'setOwner'. Expected: [newOwner], Found: []                                                                                use-natspec
+93. [Unknown] Solhint: 131:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+94. [Unknown] Solhint: 137:5   warning  Missing @notice tag in function 'withdrawEther'                                                                                                                  use-natspec
+95. [Unknown] Solhint: 139:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+96. [Unknown] Solhint: 144:5   warning  Missing @notice tag in function 'withdrawToken'                                                                                                                  use-natspec
+97. [Unknown] Solhint: 144:5   warning  Missing @param tag in function 'withdrawToken'                                                                                                                   use-natspec
+98. [Unknown] Solhint: 144:5   warning  Mismatch in @param names for function 'withdrawToken'. Expected: [tokenAddress], Found: []                                                                       use-natspec
+99. [Unknown] Solhint: 147:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+100. [Unknown] Solhint: 148:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+101. [Unknown] Solhint: 2:1   warning  Found more than One contract per file. 12 contracts found!                                                          one-contract-per-file
+102. [Unknown] Solhint: 2:1   warning  Compiler version ^0.8.9 does not satisfy the ^0.8.24 semver requirement                                             compiler-version
+103. [Unknown] Solhint: 5:1   warning  Missing @title tag in contract 'Context'                                                                            use-natspec
+104. [Unknown] Solhint: 5:1   warning  Missing @author tag in contract 'Context'                                                                           use-natspec
+105. [Unknown] Solhint: 5:1   warning  Missing @notice tag in contract 'Context'                                                                           use-natspec
+106. [Unknown] Solhint: 6:5   warning  Missing @notice tag in function '_msgSender'                                                                        use-natspec
+107. [Unknown] Solhint: 6:5   warning  Missing @return tag in function '_msgSender'                                                                        use-natspec
+108. [Unknown] Solhint: 6:5   warning  Mismatch in @return count for function '_msgSender'. Expected: 1, Found: 0                                          use-natspec
+109. [Unknown] Solhint: 10:5   warning  Missing @notice tag in function '_msgData'                                                                          use-natspec
+110. [Unknown] Solhint: 10:5   warning  Missing @return tag in function '_msgData'                                                                          use-natspec
+111. [Unknown] Solhint: 10:5   warning  Mismatch in @return count for function '_msgData'. Expected: 1, Found: 0                                            use-natspec
+112. [Unknown] Solhint: 15:1   warning  Missing @title tag in contract 'Ownable'                                                                            use-natspec
+113. [Unknown] Solhint: 15:1   warning  Missing @author tag in contract 'Ownable'                                                                           use-natspec
+114. [Unknown] Solhint: 15:1   warning  Missing @notice tag in contract 'Ownable'                                                                           use-natspec
+115. [Unknown] Solhint: 18:5   warning  Missing @notice tag in event 'OwnershipTransferred'                                                                 use-natspec
+116. [Unknown] Solhint: 18:5   warning  Missing @param tag in event 'OwnershipTransferred'                                                                  use-natspec
+117. [Unknown] Solhint: 18:5   warning  Mismatch in @param names for event 'OwnershipTransferred'. Expected: [previousOwner, newOwner], Found: []           use-natspec
+118. [Unknown] Solhint: 20:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+119. [Unknown] Solhint: 29:5   warning  Missing @notice tag in function 'owner'                                                                             use-natspec
+120. [Unknown] Solhint: 29:5   warning  Missing @return tag in function 'owner'                                                                             use-natspec
+121. [Unknown] Solhint: 29:5   warning  Mismatch in @return count for function 'owner'. Expected: 1, Found: 0                                               use-natspec
+122. [Unknown] Solhint: 33:5   warning  Missing @notice tag in function '_checkOwner'                                                                       use-natspec
+123. [Unknown] Solhint: 34:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+124. [Unknown] Solhint: 37:5   warning  Missing @notice tag in function '_transferOwnership'                                                                use-natspec
+125. [Unknown] Solhint: 37:5   warning  Missing @param tag in function '_transferOwnership'                                                                 use-natspec
+126. [Unknown] Solhint: 37:5   warning  Mismatch in @param names for function '_transferOwnership'. Expected: [newOwner], Found: []                         use-natspec
+127. [Unknown] Solhint: 44:1   warning  Missing @title tag in contract 'IERC165'                                                                            use-natspec
+128. [Unknown] Solhint: 44:1   warning  Missing @author tag in contract 'IERC165'                                                                           use-natspec
+129. [Unknown] Solhint: 44:1   warning  Missing @notice tag in contract 'IERC165'                                                                           use-natspec
+130. [Unknown] Solhint: 45:5   warning  Missing @notice tag in function 'supportsInterface'                                                                 use-natspec
+131. [Unknown] Solhint: 45:5   warning  Missing @param tag in function 'supportsInterface'                                                                  use-natspec
+132. [Unknown] Solhint: 45:5   warning  Mismatch in @param names for function 'supportsInterface'. Expected: [interfaceId], Found: []                       use-natspec
+133. [Unknown] Solhint: 45:5   warning  Missing @return tag in function 'supportsInterface'                                                                 use-natspec
+134. [Unknown] Solhint: 45:5   warning  Mismatch in @return count for function 'supportsInterface'. Expected: 1, Found: 0                                   use-natspec
+135. [Unknown] Solhint: 48:1   warning  Missing @title tag in contract 'IERC721'                                                                            use-natspec
+136. [Unknown] Solhint: 48:1   warning  Missing @author tag in contract 'IERC721'                                                                           use-natspec
+137. [Unknown] Solhint: 48:1   warning  Missing @notice tag in contract 'IERC721'                                                                           use-natspec
+138. [Unknown] Solhint: 49:5   warning  Missing @notice tag in event 'Transfer'                                                                             use-natspec
+139. [Unknown] Solhint: 49:5   warning  Missing @param tag in event 'Transfer'                                                                              use-natspec
+140. [Unknown] Solhint: 49:5   warning  Mismatch in @param names for event 'Transfer'. Expected: [from, to, tokenId], Found: []                             use-natspec
+141. [Unknown] Solhint: 50:5   warning  Missing @notice tag in event 'Approval'                                                                             use-natspec
+142. [Unknown] Solhint: 50:5   warning  Missing @param tag in event 'Approval'                                                                              use-natspec
+143. [Unknown] Solhint: 50:5   warning  Mismatch in @param names for event 'Approval'. Expected: [owner, approved, tokenId], Found: []                      use-natspec
+144. [Unknown] Solhint: 51:5   warning  Missing @notice tag in event 'ApprovalForAll'                                                                       use-natspec
+145. [Unknown] Solhint: 51:5   warning  Missing @param tag in event 'ApprovalForAll'                                                                        use-natspec
+146. [Unknown] Solhint: 51:5   warning  Mismatch in @param names for event 'ApprovalForAll'. Expected: [owner, operator, approved], Found: []               use-natspec
+147. [Unknown] Solhint: 51:5   warning  GC: [approved] on Event [ApprovalForAll] could be Indexed                                                           gas-indexed-events
+148. [Unknown] Solhint: 52:5   warning  Missing @notice tag in function 'balanceOf'                                                                         use-natspec
+149. [Unknown] Solhint: 52:5   warning  Missing @param tag in function 'balanceOf'                                                                          use-natspec
+150. [Unknown] Solhint: 52:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [owner], Found: []                                     use-natspec
+151. [Unknown] Solhint: 52:5   warning  Missing @return tag in function 'balanceOf'                                                                         use-natspec
+152. [Unknown] Solhint: 52:5   warning  Mismatch in @return names for function 'balanceOf'. Expected: [balance], Found: []                                  use-natspec
+153. [Unknown] Solhint: 53:5   warning  Missing @notice tag in function 'ownerOf'                                                                           use-natspec
+154. [Unknown] Solhint: 53:5   warning  Missing @param tag in function 'ownerOf'                                                                            use-natspec
+155. [Unknown] Solhint: 53:5   warning  Mismatch in @param names for function 'ownerOf'. Expected: [tokenId], Found: []                                     use-natspec
+156. [Unknown] Solhint: 53:5   warning  Missing @return tag in function 'ownerOf'                                                                           use-natspec
+157. [Unknown] Solhint: 53:5   warning  Mismatch in @return names for function 'ownerOf'. Expected: [owner], Found: []                                      use-natspec
+158. [Unknown] Solhint: 54:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+159. [Unknown] Solhint: 54:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+160. [Unknown] Solhint: 54:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId], Found: []                  use-natspec
+161. [Unknown] Solhint: 55:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+162. [Unknown] Solhint: 55:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+163. [Unknown] Solhint: 55:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId, data], Found: []            use-natspec
+164. [Unknown] Solhint: 56:5   warning  Missing @notice tag in function 'transferFrom'                                                                      use-natspec
+165. [Unknown] Solhint: 56:5   warning  Missing @param tag in function 'transferFrom'                                                                       use-natspec
+166. [Unknown] Solhint: 56:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, tokenId], Found: []                      use-natspec
+167. [Unknown] Solhint: 57:5   warning  Missing @notice tag in function 'approve'                                                                           use-natspec
+168. [Unknown] Solhint: 57:5   warning  Missing @param tag in function 'approve'                                                                            use-natspec
+169. [Unknown] Solhint: 57:5   warning  Mismatch in @param names for function 'approve'. Expected: [to, tokenId], Found: []                                 use-natspec
+170. [Unknown] Solhint: 58:5   warning  Missing @notice tag in function 'setApprovalForAll'                                                                 use-natspec
+171. [Unknown] Solhint: 58:5   warning  Missing @param tag in function 'setApprovalForAll'                                                                  use-natspec
+172. [Unknown] Solhint: 58:5   warning  Mismatch in @param names for function 'setApprovalForAll'. Expected: [operator, approved], Found: []                use-natspec
+173. [Unknown] Solhint: 59:5   warning  Missing @notice tag in function 'getApproved'                                                                       use-natspec
+174. [Unknown] Solhint: 59:5   warning  Missing @param tag in function 'getApproved'                                                                        use-natspec
+175. [Unknown] Solhint: 59:5   warning  Mismatch in @param names for function 'getApproved'. Expected: [tokenId], Found: []                                 use-natspec
+176. [Unknown] Solhint: 59:5   warning  Missing @return tag in function 'getApproved'                                                                       use-natspec
+177. [Unknown] Solhint: 59:5   warning  Mismatch in @return names for function 'getApproved'. Expected: [operator], Found: []                               use-natspec
+178. [Unknown] Solhint: 60:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+179. [Unknown] Solhint: 60:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+180. [Unknown] Solhint: 60:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+181. [Unknown] Solhint: 60:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+182. [Unknown] Solhint: 60:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+183. [Unknown] Solhint: 63:1   warning  Missing @title tag in contract 'IERC721Metadata'                                                                    use-natspec
+184. [Unknown] Solhint: 63:1   warning  Missing @author tag in contract 'IERC721Metadata'                                                                   use-natspec
+185. [Unknown] Solhint: 63:1   warning  Missing @notice tag in contract 'IERC721Metadata'                                                                   use-natspec
+186. [Unknown] Solhint: 64:5   warning  Missing @notice tag in function 'name'                                                                              use-natspec
+187. [Unknown] Solhint: 64:5   warning  Missing @return tag in function 'name'                                                                              use-natspec
+188. [Unknown] Solhint: 64:5   warning  Mismatch in @return count for function 'name'. Expected: 1, Found: 0                                                use-natspec
+189. [Unknown] Solhint: 65:5   warning  Missing @notice tag in function 'symbol'                                                                            use-natspec
+190. [Unknown] Solhint: 65:5   warning  Missing @return tag in function 'symbol'                                                                            use-natspec
+191. [Unknown] Solhint: 65:5   warning  Mismatch in @return count for function 'symbol'. Expected: 1, Found: 0                                              use-natspec
+192. [Unknown] Solhint: 66:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+193. [Unknown] Solhint: 66:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+194. [Unknown] Solhint: 66:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+195. [Unknown] Solhint: 66:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+196. [Unknown] Solhint: 66:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+197. [Unknown] Solhint: 69:1   warning  Missing @title tag in contract 'ERC721'                                                                             use-natspec
+198. [Unknown] Solhint: 69:1   warning  Missing @author tag in contract 'ERC721'                                                                            use-natspec
+199. [Unknown] Solhint: 69:1   warning  Missing @notice tag in contract 'ERC721'                                                                            use-natspec
+200. [Unknown] Solhint: 77:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+201. [Unknown] Solhint: 77:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+202. [Unknown] Solhint: 77:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [name_, symbol_], Found: []                          use-natspec
+203. [Unknown] Solhint: 82:5   warning  Missing @notice tag in function 'supportsInterface'                                                                 use-natspec
+204. [Unknown] Solhint: 82:5   warning  Missing @param tag in function 'supportsInterface'                                                                  use-natspec
+205. [Unknown] Solhint: 82:5   warning  Mismatch in @param names for function 'supportsInterface'. Expected: [interfaceId], Found: []                       use-natspec
+206. [Unknown] Solhint: 82:5   warning  Missing @return tag in function 'supportsInterface'                                                                 use-natspec
+207. [Unknown] Solhint: 82:5   warning  Mismatch in @return count for function 'supportsInterface'. Expected: 1, Found: 0                                   use-natspec
+208. [Unknown] Solhint: 89:5   warning  Missing @notice tag in function 'balanceOf'                                                                         use-natspec
+209. [Unknown] Solhint: 89:5   warning  Missing @param tag in function 'balanceOf'                                                                          use-natspec
+210. [Unknown] Solhint: 89:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [owner], Found: []                                     use-natspec
+211. [Unknown] Solhint: 89:5   warning  Missing @return tag in function 'balanceOf'                                                                         use-natspec
+212. [Unknown] Solhint: 89:5   warning  Mismatch in @return count for function 'balanceOf'. Expected: 1, Found: 0                                           use-natspec
+213. [Unknown] Solhint: 90:9   warning  Error message for require is too long: 41 counted / 32 allowed                                                      reason-string
+214. [Unknown] Solhint: 90:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+215. [Unknown] Solhint: 90:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+216. [Unknown] Solhint: 94:5   warning  Missing @notice tag in function 'ownerOf'                                                                           use-natspec
+217. [Unknown] Solhint: 94:5   warning  Missing @param tag in function 'ownerOf'                                                                            use-natspec
+218. [Unknown] Solhint: 94:5   warning  Mismatch in @param names for function 'ownerOf'. Expected: [tokenId], Found: []                                     use-natspec
+219. [Unknown] Solhint: 94:5   warning  Missing @return tag in function 'ownerOf'                                                                           use-natspec
+220. [Unknown] Solhint: 94:5   warning  Mismatch in @return count for function 'ownerOf'. Expected: 1, Found: 0                                             use-natspec
+221. [Unknown] Solhint: 96:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+222. [Unknown] Solhint: 100:5   warning  Missing @notice tag in function '_ownerOf'                                                                          use-natspec
+223. [Unknown] Solhint: 100:5   warning  Missing @param tag in function '_ownerOf'                                                                           use-natspec
+224. [Unknown] Solhint: 100:5   warning  Mismatch in @param names for function '_ownerOf'. Expected: [tokenId], Found: []                                    use-natspec
+225. [Unknown] Solhint: 100:5   warning  Missing @return tag in function '_ownerOf'                                                                          use-natspec
+226. [Unknown] Solhint: 100:5   warning  Mismatch in @return count for function '_ownerOf'. Expected: 1, Found: 0                                            use-natspec
+227. [Unknown] Solhint: 104:5   warning  Missing @notice tag in function 'name'                                                                              use-natspec
+228. [Unknown] Solhint: 104:5   warning  Missing @return tag in function 'name'                                                                              use-natspec
+229. [Unknown] Solhint: 104:5   warning  Mismatch in @return count for function 'name'. Expected: 1, Found: 0                                                use-natspec
+230. [Unknown] Solhint: 108:5   warning  Missing @notice tag in function 'symbol'                                                                            use-natspec
+231. [Unknown] Solhint: 108:5   warning  Missing @return tag in function 'symbol'                                                                            use-natspec
+232. [Unknown] Solhint: 108:5   warning  Mismatch in @return count for function 'symbol'. Expected: 1, Found: 0                                              use-natspec
+233. [Unknown] Solhint: 112:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+234. [Unknown] Solhint: 112:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+235. [Unknown] Solhint: 112:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+236. [Unknown] Solhint: 112:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+237. [Unknown] Solhint: 112:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+238. [Unknown] Solhint: 113:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+239. [Unknown] Solhint: 117:5   warning  Missing @notice tag in function 'approve'                                                                           use-natspec
+240. [Unknown] Solhint: 117:5   warning  Missing @param tag in function 'approve'                                                                            use-natspec
+241. [Unknown] Solhint: 117:5   warning  Mismatch in @param names for function 'approve'. Expected: [to, tokenId], Found: []                                 use-natspec
+242. [Unknown] Solhint: 119:9   warning  Error message for require is too long: 33 counted / 32 allowed                                                      reason-string
+243. [Unknown] Solhint: 119:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+244. [Unknown] Solhint: 119:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+245. [Unknown] Solhint: 120:2   warning  Line length must be no more than 120 but current length is 132                                                      max-line-length
+246. [Unknown] Solhint: 120:9   warning  Error message for require is too long: 48 counted / 32 allowed                                                      reason-string
+247. [Unknown] Solhint: 120:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+248. [Unknown] Solhint: 120:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+249. [Unknown] Solhint: 124:5   warning  Missing @notice tag in function 'getApproved'                                                                       use-natspec
+250. [Unknown] Solhint: 124:5   warning  Missing @param tag in function 'getApproved'                                                                        use-natspec
+251. [Unknown] Solhint: 124:5   warning  Mismatch in @param names for function 'getApproved'. Expected: [tokenId], Found: []                                 use-natspec
+252. [Unknown] Solhint: 124:5   warning  Missing @return tag in function 'getApproved'                                                                       use-natspec
+253. [Unknown] Solhint: 124:5   warning  Mismatch in @return count for function 'getApproved'. Expected: 1, Found: 0                                         use-natspec
+254. [Unknown] Solhint: 125:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+255. [Unknown] Solhint: 129:5   warning  Missing @notice tag in function 'setApprovalForAll'                                                                 use-natspec
+256. [Unknown] Solhint: 129:5   warning  Missing @param tag in function 'setApprovalForAll'                                                                  use-natspec
+257. [Unknown] Solhint: 129:5   warning  Mismatch in @param names for function 'setApprovalForAll'. Expected: [operator, approved], Found: []                use-natspec
+258. [Unknown] Solhint: 130:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+259. [Unknown] Solhint: 135:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+260. [Unknown] Solhint: 135:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+261. [Unknown] Solhint: 135:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+262. [Unknown] Solhint: 135:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+263. [Unknown] Solhint: 135:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+264. [Unknown] Solhint: 139:5   warning  Missing @notice tag in function 'transferFrom'                                                                      use-natspec
+265. [Unknown] Solhint: 139:5   warning  Missing @param tag in function 'transferFrom'                                                                       use-natspec
+266. [Unknown] Solhint: 139:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, tokenId], Found: []                      use-natspec
+267. [Unknown] Solhint: 140:9   warning  Error message for require is too long: 40 counted / 32 allowed                                                      reason-string
+268. [Unknown] Solhint: 140:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+269. [Unknown] Solhint: 140:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+270. [Unknown] Solhint: 144:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+271. [Unknown] Solhint: 144:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+272. [Unknown] Solhint: 144:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId], Found: []                  use-natspec
+273. [Unknown] Solhint: 148:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+274. [Unknown] Solhint: 148:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+275. [Unknown] Solhint: 148:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId, data], Found: []            use-natspec
+276. [Unknown] Solhint: 149:9   warning  Error message for require is too long: 40 counted / 32 allowed                                                      reason-string
+277. [Unknown] Solhint: 149:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+278. [Unknown] Solhint: 149:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+279. [Unknown] Solhint: 153:5   warning  Missing @notice tag in function '_safeTransfer'                                                                     use-natspec
+280. [Unknown] Solhint: 153:5   warning  Missing @param tag in function '_safeTransfer'                                                                      use-natspec
+281. [Unknown] Solhint: 153:5   warning  Mismatch in @param names for function '_safeTransfer'. Expected: [from, to, tokenId, data], Found: []               use-natspec
+282. [Unknown] Solhint: 155:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+283. [Unknown] Solhint: 155:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+284. [Unknown] Solhint: 155:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+285. [Unknown] Solhint: 158:5   warning  Missing @notice tag in function '_isApprovedOrOwner'                                                                use-natspec
+286. [Unknown] Solhint: 158:5   warning  Missing @param tag in function '_isApprovedOrOwner'                                                                 use-natspec
+287. [Unknown] Solhint: 158:5   warning  Mismatch in @param names for function '_isApprovedOrOwner'. Expected: [spender, tokenId], Found: []                 use-natspec
+288. [Unknown] Solhint: 158:5   warning  Missing @return tag in function '_isApprovedOrOwner'                                                                use-natspec
+289. [Unknown] Solhint: 158:5   warning  Mismatch in @return count for function '_isApprovedOrOwner'. Expected: 1, Found: 0                                  use-natspec
+290. [Unknown] Solhint: 163:5   warning  Missing @notice tag in function '_safeMint'                                                                         use-natspec
+291. [Unknown] Solhint: 163:5   warning  Missing @param tag in function '_safeMint'                                                                          use-natspec
+292. [Unknown] Solhint: 163:5   warning  Mismatch in @param names for function '_safeMint'. Expected: [to, tokenId], Found: []                               use-natspec
+293. [Unknown] Solhint: 167:5   warning  Missing @notice tag in function '_safeMint'                                                                         use-natspec
+294. [Unknown] Solhint: 167:5   warning  Missing @param tag in function '_safeMint'                                                                          use-natspec
+295. [Unknown] Solhint: 167:5   warning  Mismatch in @param names for function '_safeMint'. Expected: [to, tokenId, data], Found: []                         use-natspec
+296. [Unknown] Solhint: 169:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+297. [Unknown] Solhint: 169:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+298. [Unknown] Solhint: 169:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+299. [Unknown] Solhint: 172:5   warning  Missing @notice tag in function '_mint'                                                                             use-natspec
+300. [Unknown] Solhint: 172:5   warning  Missing @param tag in function '_mint'                                                                              use-natspec
+301. [Unknown] Solhint: 172:5   warning  Mismatch in @param names for function '_mint'. Expected: [to, tokenId], Found: []                                   use-natspec
+302. [Unknown] Solhint: 173:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+303. [Unknown] Solhint: 174:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+304. [Unknown] Solhint: 175:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+305. [Unknown] Solhint: 180:5   warning  Missing @notice tag in function '_transfer'                                                                         use-natspec
+306. [Unknown] Solhint: 180:5   warning  Missing @param tag in function '_transfer'                                                                          use-natspec
+307. [Unknown] Solhint: 180:5   warning  Mismatch in @param names for function '_transfer'. Expected: [from, to, tokenId], Found: []                         use-natspec
+308. [Unknown] Solhint: 181:9   warning  Error message for require is too long: 37 counted / 32 allowed                                                      reason-string
+309. [Unknown] Solhint: 181:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+310. [Unknown] Solhint: 181:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+311. [Unknown] Solhint: 182:9   warning  Error message for require is too long: 36 counted / 32 allowed                                                      reason-string
+312. [Unknown] Solhint: 182:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+313. [Unknown] Solhint: 182:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+314. [Unknown] Solhint: 184:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+315. [Unknown] Solhint: 185:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+316. [Unknown] Solhint: 190:5   warning  Missing @notice tag in function '_approve'                                                                          use-natspec
+317. [Unknown] Solhint: 190:5   warning  Missing @param tag in function '_approve'                                                                           use-natspec
+318. [Unknown] Solhint: 190:5   warning  Mismatch in @param names for function '_approve'. Expected: [to, tokenId], Found: []                                use-natspec
+319. [Unknown] Solhint: 195:2   warning  Line length must be no more than 120 but current length is 122                                                      max-line-length
+320. [Unknown] Solhint: 195:5   warning  Missing @notice tag in function '_checkOnERC721Received'                                                            use-natspec
+321. [Unknown] Solhint: 195:5   warning  Missing @param tag in function '_checkOnERC721Received'                                                             use-natspec
+322. [Unknown] Solhint: 195:5   warning  Mismatch in @param names for function '_checkOnERC721Received'. Expected: [from, to, tokenId, data], Found: []      use-natspec
+323. [Unknown] Solhint: 195:5   warning  Missing @return tag in function '_checkOnERC721Received'                                                            use-natspec
+324. [Unknown] Solhint: 195:5   warning  Mismatch in @return count for function '_checkOnERC721Received'. Expected: 1, Found: 0                              use-natspec
+325. [Unknown] Solhint: 207:1   warning  Missing @title tag in contract 'IERC721Receiver'                                                                    use-natspec
+326. [Unknown] Solhint: 207:1   warning  Missing @author tag in contract 'IERC721Receiver'                                                                   use-natspec
+327. [Unknown] Solhint: 207:1   warning  Missing @notice tag in contract 'IERC721Receiver'                                                                   use-natspec
+328. [Unknown] Solhint: 208:2   warning  Line length must be no more than 120 but current length is 126                                                      max-line-length
+329. [Unknown] Solhint: 208:5   warning  Missing @notice tag in function 'onERC721Received'                                                                  use-natspec
+330. [Unknown] Solhint: 208:5   warning  Missing @param tag in function 'onERC721Received'                                                                   use-natspec
+331. [Unknown] Solhint: 208:5   warning  Mismatch in @param names for function 'onERC721Received'. Expected: [operator, from, tokenId, data], Found: []      use-natspec
+332. [Unknown] Solhint: 208:5   warning  Missing @return tag in function 'onERC721Received'                                                                  use-natspec
+333. [Unknown] Solhint: 208:5   warning  Mismatch in @return count for function 'onERC721Received'. Expected: 1, Found: 0                                    use-natspec
+334. [Unknown] Solhint: 212:1   warning  Missing @title tag in contract 'ReentrancyGuard'                                                                    use-natspec
+335. [Unknown] Solhint: 212:1   warning  Missing @author tag in contract 'ReentrancyGuard'                                                                   use-natspec
+336. [Unknown] Solhint: 212:1   warning  Missing @notice tag in contract 'ReentrancyGuard'                                                                   use-natspec
+337. [Unknown] Solhint: 217:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+338. [Unknown] Solhint: 222:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+339. [Unknown] Solhint: 230:1   warning  Missing @title tag in contract 'PaymentSplitter'                                                                    use-natspec
+340. [Unknown] Solhint: 230:1   warning  Missing @author tag in contract 'PaymentSplitter'                                                                   use-natspec
+341. [Unknown] Solhint: 230:1   warning  Missing @notice tag in contract 'PaymentSplitter'                                                                   use-natspec
+342. [Unknown] Solhint: 231:5   warning  Missing @notice tag in event 'PayeeAdded'                                                                           use-natspec
+343. [Unknown] Solhint: 231:5   warning  Missing @param tag in event 'PayeeAdded'                                                                            use-natspec
+344. [Unknown] Solhint: 231:5   warning  Mismatch in @param names for event 'PayeeAdded'. Expected: [account, shares], Found: []                             use-natspec
+345. [Unknown] Solhint: 231:5   warning  GC: [account] on Event [PayeeAdded] could be Indexed                                                                gas-indexed-events
+346. [Unknown] Solhint: 231:5   warning  GC: [shares] on Event [PayeeAdded] could be Indexed                                                                 gas-indexed-events
+347. [Unknown] Solhint: 232:5   warning  Missing @notice tag in event 'PaymentReleased'                                                                      use-natspec
+348. [Unknown] Solhint: 232:5   warning  Missing @param tag in event 'PaymentReleased'                                                                       use-natspec
+349. [Unknown] Solhint: 232:5   warning  Mismatch in @param names for event 'PaymentReleased'. Expected: [to, amount], Found: []                             use-natspec
+350. [Unknown] Solhint: 232:5   warning  GC: [to] on Event [PaymentReleased] could be Indexed                                                                gas-indexed-events
+351. [Unknown] Solhint: 232:5   warning  GC: [amount] on Event [PaymentReleased] could be Indexed                                                            gas-indexed-events
+352. [Unknown] Solhint: 233:5   warning  Missing @notice tag in event 'PaymentReceived'                                                                      use-natspec
+353. [Unknown] Solhint: 233:5   warning  Missing @param tag in event 'PaymentReceived'                                                                       use-natspec
+354. [Unknown] Solhint: 233:5   warning  Mismatch in @param names for event 'PaymentReceived'. Expected: [from, amount], Found: []                           use-natspec
+355. [Unknown] Solhint: 233:5   warning  GC: [from] on Event [PaymentReceived] could be Indexed                                                              gas-indexed-events
+356. [Unknown] Solhint: 233:5   warning  GC: [amount] on Event [PaymentReceived] could be Indexed                                                            gas-indexed-events
+357. [Unknown] Solhint: 241:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+358. [Unknown] Solhint: 241:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+359. [Unknown] Solhint: 241:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [payees, shares_], Found: []                         use-natspec
+360. [Unknown] Solhint: 242:9   warning  Error message for require is too long: 50 counted / 32 allowed                                                      reason-string
+361. [Unknown] Solhint: 242:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+362. [Unknown] Solhint: 242:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+363. [Unknown] Solhint: 243:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+364. [Unknown] Solhint: 244:48  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+365. [Unknown] Solhint: 249:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+366. [Unknown] Solhint: 253:5   warning  Missing @notice tag in function 'release'                                                                           use-natspec
+367. [Unknown] Solhint: 253:5   warning  Missing @param tag in function 'release'                                                                            use-natspec
+368. [Unknown] Solhint: 253:5   warning  Mismatch in @param names for function 'release'. Expected: [account], Found: []                                     use-natspec
+369. [Unknown] Solhint: 254:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+370. [Unknown] Solhint: 254:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+371. [Unknown] Solhint: 254:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+372. [Unknown] Solhint: 257:9   warning  Error message for require is too long: 43 counted / 32 allowed                                                      reason-string
+373. [Unknown] Solhint: 257:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+374. [Unknown] Solhint: 257:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+375. [Unknown] Solhint: 264:5   warning  Missing @notice tag in function '_addPayee'                                                                         use-natspec
+376. [Unknown] Solhint: 264:5   warning  Missing @param tag in function '_addPayee'                                                                          use-natspec
+377. [Unknown] Solhint: 264:5   warning  Mismatch in @param names for function '_addPayee'. Expected: [account, shares_], Found: []                          use-natspec
+378. [Unknown] Solhint: 265:9   warning  Error message for require is too long: 44 counted / 32 allowed                                                      reason-string
+379. [Unknown] Solhint: 265:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+380. [Unknown] Solhint: 265:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+381. [Unknown] Solhint: 266:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+382. [Unknown] Solhint: 267:9   warning  Error message for require is too long: 43 counted / 32 allowed                                                      reason-string
+383. [Unknown] Solhint: 267:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+384. [Unknown] Solhint: 267:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+385. [Unknown] Solhint: 275:1   warning  Missing @title tag in contract 'Address'                                                                            use-natspec
+386. [Unknown] Solhint: 275:1   warning  Missing @author tag in contract 'Address'                                                                           use-natspec
+387. [Unknown] Solhint: 275:1   warning  Missing @notice tag in contract 'Address'                                                                           use-natspec
+388. [Unknown] Solhint: 276:5   warning  Missing @notice tag in function 'sendValue'                                                                         use-natspec
+389. [Unknown] Solhint: 276:5   warning  Missing @param tag in function 'sendValue'                                                                          use-natspec
+390. [Unknown] Solhint: 276:5   warning  Mismatch in @param names for function 'sendValue'. Expected: [recipient, amount], Found: []                         use-natspec
+391. [Unknown] Solhint: 277:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+392. [Unknown] Solhint: 277:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+393. [Unknown] Solhint: 279:9   warning  Error message for require is too long: 58 counted / 32 allowed                                                      reason-string
+394. [Unknown] Solhint: 279:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+395. [Unknown] Solhint: 279:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+396. [Unknown] Solhint: 284:1   warning  Missing @title tag in contract 'MerkleProof'                                                                        use-natspec
+397. [Unknown] Solhint: 284:1   warning  Missing @author tag in contract 'MerkleProof'                                                                       use-natspec
+398. [Unknown] Solhint: 284:1   warning  Missing @notice tag in contract 'MerkleProof'                                                                       use-natspec
+399. [Unknown] Solhint: 285:5   warning  Missing @notice tag in function 'verify'                                                                            use-natspec
+400. [Unknown] Solhint: 285:5   warning  Missing @param tag in function 'verify'                                                                             use-natspec
+401. [Unknown] Solhint: 285:5   warning  Mismatch in @param names for function 'verify'. Expected: [proof, root, leaf], Found: []                            use-natspec
+402. [Unknown] Solhint: 285:5   warning  Missing @return tag in function 'verify'                                                                            use-natspec
+403. [Unknown] Solhint: 285:5   warning  Mismatch in @return count for function 'verify'. Expected: 1, Found: 0                                              use-natspec
+404. [Unknown] Solhint: 289:5   warning  Missing @notice tag in function 'processProof'                                                                      use-natspec
+405. [Unknown] Solhint: 289:5   warning  Missing @param tag in function 'processProof'                                                                       use-natspec
+406. [Unknown] Solhint: 289:5   warning  Mismatch in @param names for function 'processProof'. Expected: [proof, leaf], Found: []                            use-natspec
+407. [Unknown] Solhint: 289:5   warning  Missing @return tag in function 'processProof'                                                                      use-natspec
+408. [Unknown] Solhint: 289:5   warning  Mismatch in @return count for function 'processProof'. Expected: 1, Found: 0                                        use-natspec
+409. [Unknown] Solhint: 291:47  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+410. [Unknown] Solhint: 297:5   warning  Missing @notice tag in function '_hashPair'                                                                         use-natspec
+411. [Unknown] Solhint: 297:5   warning  Missing @param tag in function '_hashPair'                                                                          use-natspec
+412. [Unknown] Solhint: 297:5   warning  Mismatch in @param names for function '_hashPair'. Expected: [a, b], Found: []                                      use-natspec
+413. [Unknown] Solhint: 297:5   warning  Missing @return tag in function '_hashPair'                                                                         use-natspec
+414. [Unknown] Solhint: 297:5   warning  Mismatch in @return count for function '_hashPair'. Expected: 1, Found: 0                                           use-natspec
+415. [Unknown] Solhint: 303:1   warning  Missing @title tag in contract 'Counters'                                                                           use-natspec
+416. [Unknown] Solhint: 303:1   warning  Missing @author tag in contract 'Counters'                                                                          use-natspec
+417. [Unknown] Solhint: 303:1   warning  Missing @notice tag in contract 'Counters'                                                                          use-natspec
+418. [Unknown] Solhint: 308:5   warning  Missing @notice tag in function 'current'                                                                           use-natspec
+419. [Unknown] Solhint: 308:5   warning  Missing @param tag in function 'current'                                                                            use-natspec
+420. [Unknown] Solhint: 308:5   warning  Mismatch in @param names for function 'current'. Expected: [counter], Found: []                                     use-natspec
+421. [Unknown] Solhint: 308:5   warning  Missing @return tag in function 'current'                                                                           use-natspec
+422. [Unknown] Solhint: 308:5   warning  Mismatch in @return count for function 'current'. Expected: 1, Found: 0                                             use-natspec
+423. [Unknown] Solhint: 312:5   warning  Missing @notice tag in function 'increment'                                                                         use-natspec
+424. [Unknown] Solhint: 312:5   warning  Missing @param tag in function 'increment'                                                                          use-natspec
+425. [Unknown] Solhint: 312:5   warning  Mismatch in @param names for function 'increment'. Expected: [counter], Found: []                                   use-natspec
+426. [Unknown] Solhint: 314:13  warning  GC: For [ counter ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                            gas-increment-by-one
+427. [Unknown] Solhint: 320:1   warning  Missing @title tag in contract 'Strings'                                                                            use-natspec
+428. [Unknown] Solhint: 320:1   warning  Missing @author tag in contract 'Strings'                                                                           use-natspec
+429. [Unknown] Solhint: 320:1   warning  Missing @notice tag in contract 'Strings'                                                                           use-natspec
+430. [Unknown] Solhint: 321:5   warning  Missing @notice tag in function 'toString'                                                                          use-natspec
+431. [Unknown] Solhint: 321:5   warning  Missing @param tag in function 'toString'                                                                           use-natspec
+432. [Unknown] Solhint: 321:5   warning  Mismatch in @param names for function 'toString'. Expected: [value], Found: []                                      use-natspec
+433. [Unknown] Solhint: 321:5   warning  Missing @return tag in function 'toString'                                                                          use-natspec
+434. [Unknown] Solhint: 321:5   warning  Mismatch in @return count for function 'toString'. Expected: 1, Found: 0                                            use-natspec
+435. [Unknown] Solhint: 328:13  warning  GC: For [ digits ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                             gas-increment-by-one
+436. [Unknown] Solhint: 333:13  warning  GC: For [ digits ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                             gas-increment-by-one
+437. [Unknown] Solhint: 342:1   warning  Code contains empty blocks                                                                                          no-empty-blocks
+438. [Unknown] Solhint: 342:1   warning  Missing @title tag in contract 'OwnableDelegateProxy'                                                               use-natspec
+439. [Unknown] Solhint: 342:1   warning  Missing @author tag in contract 'OwnableDelegateProxy'                                                              use-natspec
+440. [Unknown] Solhint: 342:1   warning  Missing @notice tag in contract 'OwnableDelegateProxy'                                                              use-natspec
+441. [Unknown] Solhint: 344:1   warning  Missing @title tag in contract 'ProxyRegistry'                                                                      use-natspec
+442. [Unknown] Solhint: 344:1   warning  Missing @author tag in contract 'ProxyRegistry'                                                                     use-natspec
+443. [Unknown] Solhint: 344:1   warning  Missing @notice tag in contract 'ProxyRegistry'                                                                     use-natspec
+444. [Unknown] Solhint: 345:5   warning  Missing @notice tag in variable 'proxies'                                                                           use-natspec
+445. [Unknown] Solhint: 349:1   warning  Contract has 16 states declarations but allowed no more than 15                                                     max-states-count
+446. [Unknown] Solhint: 349:1   warning  Missing @title tag in contract 'BoredApe'                                                                           use-natspec
+447. [Unknown] Solhint: 349:1   warning  Missing @author tag in contract 'BoredApe'                                                                          use-natspec
+448. [Unknown] Solhint: 349:1   warning  Missing @notice tag in contract 'BoredApe'                                                                          use-natspec
+449. [Unknown] Solhint: 353:5   warning  Missing @notice tag in variable 'root'                                                                              use-natspec
+450. [Unknown] Solhint: 354:5   warning  Missing @notice tag in variable 'proxyRegistryAddress'                                                              use-natspec
+451. [Unknown] Solhint: 355:5   warning  Missing @notice tag in variable 'maxSupply'                                                                         use-natspec
+452. [Unknown] Solhint: 356:5   warning  Missing @notice tag in variable 'baseURI'                                                                           use-natspec
+453. [Unknown] Solhint: 357:5   warning  Missing @notice tag in variable 'notRevealedUri'                                                                    use-natspec
+454. [Unknown] Solhint: 357:5   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+455. [Unknown] Solhint: 358:5   warning  Missing @notice tag in variable 'baseExtension'                                                                     use-natspec
+456. [Unknown] Solhint: 359:5   warning  Missing @notice tag in variable 'paused'                                                                            use-natspec
+457. [Unknown] Solhint: 360:5   warning  Missing @notice tag in variable 'revealed'                                                                          use-natspec
+458. [Unknown] Solhint: 361:5   warning  Missing @notice tag in variable 'presaleM'                                                                          use-natspec
+459. [Unknown] Solhint: 362:5   warning  Missing @notice tag in variable 'publicM'                                                                           use-natspec
+460. [Unknown] Solhint: 363:5   warning  Missing @notice tag in variable 'presaleAmountLimit'                                                                use-natspec
+461. [Unknown] Solhint: 364:5   warning  Missing @notice tag in variable '_presaleClaimed'                                                                   use-natspec
+462. [Unknown] Solhint: 365:5   warning  Missing @notice tag in variable '_price'                                                                            use-natspec
+463. [Unknown] Solhint: 375:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+464. [Unknown] Solhint: 375:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+465. [Unknown] Solhint: 375:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [uri, merkleroot, _proxyRegistryAddress], Found: []  use-natspec
+466. [Unknown] Solhint: 385:5   warning  Missing @notice tag in function 'setBaseURI'                                                                        use-natspec
+467. [Unknown] Solhint: 385:5   warning  Missing @param tag in function 'setBaseURI'                                                                         use-natspec
+468. [Unknown] Solhint: 385:5   warning  Mismatch in @param names for function 'setBaseURI'. Expected: [_tokenBaseURI], Found: []                            use-natspec
+469. [Unknown] Solhint: 389:5   warning  Missing @notice tag in function '_baseURI'                                                                          use-natspec
+470. [Unknown] Solhint: 389:5   warning  Missing @return tag in function '_baseURI'                                                                          use-natspec
+471. [Unknown] Solhint: 389:5   warning  Mismatch in @return count for function '_baseURI'. Expected: 1, Found: 0                                            use-natspec
+472. [Unknown] Solhint: 393:5   warning  Missing @notice tag in function 'reveal'                                                                            use-natspec
+473. [Unknown] Solhint: 397:5   warning  Missing @notice tag in function 'setMerkleRoot'                                                                     use-natspec
+474. [Unknown] Solhint: 397:5   warning  Missing @param tag in function 'setMerkleRoot'                                                                      use-natspec
+475. [Unknown] Solhint: 397:5   warning  Mismatch in @param names for function 'setMerkleRoot'. Expected: [merkleroot], Found: []                            use-natspec
+476. [Unknown] Solhint: 402:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+477. [Unknown] Solhint: 402:31  warning  Avoid to use tx.origin                                                                                              avoid-tx-origin
+478. [Unknown] Solhint: 407:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+479. [Unknown] Solhint: 418:5   warning  Missing @notice tag in function 'togglePause'                                                                       use-natspec
+480. [Unknown] Solhint: 422:5   warning  Missing @notice tag in function 'togglePresale'                                                                     use-natspec
+481. [Unknown] Solhint: 426:5   warning  Missing @notice tag in function 'togglePublicSale'                                                                  use-natspec
+482. [Unknown] Solhint: 430:5   warning  Missing @notice tag in function 'presaleMint'                                                                       use-natspec
+483. [Unknown] Solhint: 430:5   warning  Missing @param tag in function 'presaleMint'                                                                        use-natspec
+484. [Unknown] Solhint: 430:5   warning  Mismatch in @param names for function 'presaleMint'. Expected: [account, _amount, _proof], Found: []                use-natspec
+485. [Unknown] Solhint: 436:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+486. [Unknown] Solhint: 437:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+487. [Unknown] Solhint: 438:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+488. [Unknown] Solhint: 439:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+489. [Unknown] Solhint: 440:9   warning  Error message for require is too long: 34 counted / 32 allowed                                                      reason-string
+490. [Unknown] Solhint: 440:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+491. [Unknown] Solhint: 440:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+492. [Unknown] Solhint: 440:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+493. [Unknown] Solhint: 441:9   warning  Error message for require is too long: 34 counted / 32 allowed                                                      reason-string
+494. [Unknown] Solhint: 441:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+495. [Unknown] Solhint: 441:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+496. [Unknown] Solhint: 441:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+497. [Unknown] Solhint: 442:9   warning  Error message for require is too long: 35 counted / 32 allowed                                                      reason-string
+498. [Unknown] Solhint: 442:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+499. [Unknown] Solhint: 442:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+500. [Unknown] Solhint: 442:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+501. [Unknown] Solhint: 445:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+502. [Unknown] Solhint: 445:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+503. [Unknown] Solhint: 448:42  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+504. [Unknown] Solhint: 453:5   warning  Missing @notice tag in function 'publicSaleMint'                                                                    use-natspec
+505. [Unknown] Solhint: 453:5   warning  Missing @param tag in function 'publicSaleMint'                                                                     use-natspec
+506. [Unknown] Solhint: 453:5   warning  Mismatch in @param names for function 'publicSaleMint'. Expected: [_amount], Found: []                              use-natspec
+507. [Unknown] Solhint: 458:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+508. [Unknown] Solhint: 459:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+509. [Unknown] Solhint: 460:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+510. [Unknown] Solhint: 461:9   warning  Error message for require is too long: 35 counted / 32 allowed                                                      reason-string
+511. [Unknown] Solhint: 461:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+512. [Unknown] Solhint: 461:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+513. [Unknown] Solhint: 461:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+514. [Unknown] Solhint: 464:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+515. [Unknown] Solhint: 464:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+516. [Unknown] Solhint: 466:42  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+517. [Unknown] Solhint: 471:5   warning  Missing @notice tag in function 'mintInternal'                                                                      use-natspec
+518. [Unknown] Solhint: 477:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+519. [Unknown] Solhint: 477:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+520. [Unknown] Solhint: 477:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+521. [Unknown] Solhint: 477:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+522. [Unknown] Solhint: 477:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+523. [Unknown] Solhint: 484:9   warning  Error message for require is too long: 47 counted / 32 allowed                                                      reason-string
+524. [Unknown] Solhint: 484:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+525. [Unknown] Solhint: 484:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+526. [Unknown] Solhint: 496:5   warning  Missing @notice tag in function 'setBaseExtension'                                                                  use-natspec
+527. [Unknown] Solhint: 496:5   warning  Missing @param tag in function 'setBaseExtension'                                                                   use-natspec
+528. [Unknown] Solhint: 496:5   warning  Mismatch in @param names for function 'setBaseExtension'. Expected: [_newBaseExtension], Found: []                  use-natspec
+529. [Unknown] Solhint: 500:5   warning  Missing @notice tag in function 'setNotRevealedURI'                                                                 use-natspec
+530. [Unknown] Solhint: 500:5   warning  Missing @param tag in function 'setNotRevealedURI'                                                                  use-natspec
+531. [Unknown] Solhint: 500:5   warning  Mismatch in @param names for function 'setNotRevealedURI'. Expected: [_notRevealedURI], Found: []                   use-natspec
+532. [Unknown] Solhint: 504:5   warning  Missing @notice tag in function 'totalSupply'                                                                       use-natspec
+533. [Unknown] Solhint: 504:5   warning  Missing @return tag in function 'totalSupply'                                                                       use-natspec
+534. [Unknown] Solhint: 504:5   warning  Mismatch in @return count for function 'totalSupply'. Expected: 1, Found: 0                                         use-natspec
+535. [Unknown] Solhint: 508:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+536. [Unknown] Solhint: 508:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+537. [Unknown] Solhint: 508:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+538. [Unknown] Solhint: 508:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+539. [Unknown] Solhint: 508:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+540. [Unknown] Solhint: ✖ 539 problems (0 errors, 539 warnings)
+541. [ArbitrageFlashLoaner] Solhint: 2:1   warning  Found more than One contract per file. 2 contracts found!                                                                                                        one-contract-per-file
+542. [ArbitrageFlashLoaner] Solhint: 2:1   warning  Compiler version ^0.8.19 does not satisfy the ^0.8.24 semver requirement                                                                                         compiler-version
+543. [ArbitrageFlashLoaner] Solhint: 5:1   warning  Missing @title tag in contract 'ReentrancyGuard'                                                                                                                 use-natspec
+544. [ArbitrageFlashLoaner] Solhint: 5:1   warning  Missing @author tag in contract 'ReentrancyGuard'                                                                                                                use-natspec
+545. [ArbitrageFlashLoaner] Solhint: 5:1   warning  Missing @notice tag in contract 'ReentrancyGuard'                                                                                                                use-natspec
+546. [ArbitrageFlashLoaner] Solhint: 10:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+547. [ArbitrageFlashLoaner] Solhint: 20:5   warning  Missing @notice tag in function '_nonReentrantBefore'                                                                                                            use-natspec
+548. [ArbitrageFlashLoaner] Solhint: 21:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+549. [ArbitrageFlashLoaner] Solhint: 25:5   warning  Missing @notice tag in function '_nonReentrantAfter'                                                                                                             use-natspec
+550. [ArbitrageFlashLoaner] Solhint: 31:1   warning  Missing @title tag in contract 'IERC20'                                                                                                                          use-natspec
+551. [ArbitrageFlashLoaner] Solhint: 31:1   warning  Missing @author tag in contract 'IERC20'                                                                                                                         use-natspec
+552. [ArbitrageFlashLoaner] Solhint: 31:1   warning  Missing @notice tag in contract 'IERC20'                                                                                                                         use-natspec
+553. [ArbitrageFlashLoaner] Solhint: 32:5   warning  Missing @notice tag in event 'Transfer'                                                                                                                          use-natspec
+554. [ArbitrageFlashLoaner] Solhint: 32:5   warning  Missing @param tag in event 'Transfer'                                                                                                                           use-natspec
+555. [ArbitrageFlashLoaner] Solhint: 32:5   warning  Mismatch in @param names for event 'Transfer'. Expected: [from, to, value], Found: []                                                                            use-natspec
+556. [ArbitrageFlashLoaner] Solhint: 32:5   warning  GC: [value] on Event [Transfer] could be Indexed                                                                                                                 gas-indexed-events
+557. [ArbitrageFlashLoaner] Solhint: 33:5   warning  Missing @notice tag in event 'Approval'                                                                                                                          use-natspec
+558. [ArbitrageFlashLoaner] Solhint: 33:5   warning  Missing @param tag in event 'Approval'                                                                                                                           use-natspec
+559. [ArbitrageFlashLoaner] Solhint: 33:5   warning  Mismatch in @param names for event 'Approval'. Expected: [owner, spender, value], Found: []                                                                      use-natspec
+560. [ArbitrageFlashLoaner] Solhint: 33:5   warning  GC: [value] on Event [Approval] could be Indexed                                                                                                                 gas-indexed-events
+561. [ArbitrageFlashLoaner] Solhint: 34:5   warning  Missing @notice tag in function 'totalSupply'                                                                                                                    use-natspec
+562. [ArbitrageFlashLoaner] Solhint: 34:5   warning  Missing @return tag in function 'totalSupply'                                                                                                                    use-natspec
+563. [ArbitrageFlashLoaner] Solhint: 34:5   warning  Mismatch in @return count for function 'totalSupply'. Expected: 1, Found: 0                                                                                      use-natspec
+564. [ArbitrageFlashLoaner] Solhint: 35:5   warning  Missing @notice tag in function 'balanceOf'                                                                                                                      use-natspec
+565. [ArbitrageFlashLoaner] Solhint: 35:5   warning  Missing @param tag in function 'balanceOf'                                                                                                                       use-natspec
+566. [ArbitrageFlashLoaner] Solhint: 35:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [account], Found: []                                                                                use-natspec
+567. [ArbitrageFlashLoaner] Solhint: 35:5   warning  Missing @return tag in function 'balanceOf'                                                                                                                      use-natspec
+568. [ArbitrageFlashLoaner] Solhint: 35:5   warning  Mismatch in @return count for function 'balanceOf'. Expected: 1, Found: 0                                                                                        use-natspec
+569. [ArbitrageFlashLoaner] Solhint: 36:5   warning  Missing @notice tag in function 'transfer'                                                                                                                       use-natspec
+570. [ArbitrageFlashLoaner] Solhint: 36:5   warning  Missing @param tag in function 'transfer'                                                                                                                        use-natspec
+571. [ArbitrageFlashLoaner] Solhint: 36:5   warning  Mismatch in @param names for function 'transfer'. Expected: [to, amount], Found: []                                                                              use-natspec
+572. [ArbitrageFlashLoaner] Solhint: 36:5   warning  Missing @return tag in function 'transfer'                                                                                                                       use-natspec
+573. [ArbitrageFlashLoaner] Solhint: 36:5   warning  Mismatch in @return count for function 'transfer'. Expected: 1, Found: 0                                                                                         use-natspec
+574. [ArbitrageFlashLoaner] Solhint: 37:5   warning  Missing @notice tag in function 'allowance'                                                                                                                      use-natspec
+575. [ArbitrageFlashLoaner] Solhint: 37:5   warning  Missing @param tag in function 'allowance'                                                                                                                       use-natspec
+576. [ArbitrageFlashLoaner] Solhint: 37:5   warning  Mismatch in @param names for function 'allowance'. Expected: [owner, spender], Found: []                                                                         use-natspec
+577. [ArbitrageFlashLoaner] Solhint: 37:5   warning  Missing @return tag in function 'allowance'                                                                                                                      use-natspec
+578. [ArbitrageFlashLoaner] Solhint: 37:5   warning  Mismatch in @return count for function 'allowance'. Expected: 1, Found: 0                                                                                        use-natspec
+579. [ArbitrageFlashLoaner] Solhint: 38:5   warning  Missing @notice tag in function 'approve'                                                                                                                        use-natspec
+580. [ArbitrageFlashLoaner] Solhint: 38:5   warning  Missing @param tag in function 'approve'                                                                                                                         use-natspec
+581. [ArbitrageFlashLoaner] Solhint: 38:5   warning  Mismatch in @param names for function 'approve'. Expected: [spender, amount], Found: []                                                                          use-natspec
+582. [ArbitrageFlashLoaner] Solhint: 38:5   warning  Missing @return tag in function 'approve'                                                                                                                        use-natspec
+583. [ArbitrageFlashLoaner] Solhint: 38:5   warning  Mismatch in @return count for function 'approve'. Expected: 1, Found: 0                                                                                          use-natspec
+584. [ArbitrageFlashLoaner] Solhint: 39:5   warning  Missing @notice tag in function 'transferFrom'                                                                                                                   use-natspec
+585. [ArbitrageFlashLoaner] Solhint: 39:5   warning  Missing @param tag in function 'transferFrom'                                                                                                                    use-natspec
+586. [ArbitrageFlashLoaner] Solhint: 39:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, amount], Found: []                                                                    use-natspec
+587. [ArbitrageFlashLoaner] Solhint: 39:5   warning  Missing @return tag in function 'transferFrom'                                                                                                                   use-natspec
+588. [ArbitrageFlashLoaner] Solhint: 39:5   warning  Mismatch in @return count for function 'transferFrom'. Expected: 1, Found: 0                                                                                     use-natspec
+589. [ArbitrageFlashLoaner] Solhint: 43:1   warning  Missing @title tag in contract 'IAavePool'                                                                                                                       use-natspec
+590. [ArbitrageFlashLoaner] Solhint: 43:1   warning  Missing @author tag in contract 'IAavePool'                                                                                                                      use-natspec
+591. [ArbitrageFlashLoaner] Solhint: 43:1   warning  Missing @notice tag in contract 'IAavePool'                                                                                                                      use-natspec
+592. [ArbitrageFlashLoaner] Solhint: 44:5   warning  Missing @notice tag in function 'flashLoan'                                                                                                                      use-natspec
+593. [ArbitrageFlashLoaner] Solhint: 44:5   warning  Missing @param tag in function 'flashLoan'                                                                                                                       use-natspec
+594. [ArbitrageFlashLoaner] Solhint: 44:5   warning  Mismatch in @param names for function 'flashLoan'. Expected: [receiverAddress, assets, amounts, interestRateModes, onBehalfOf, params, referralCode], Found: []  use-natspec
+595. [ArbitrageFlashLoaner] Solhint: 56:1   warning  Missing @title tag in contract 'ArbitrageFlashLoaner'                                                                                                            use-natspec
+596. [ArbitrageFlashLoaner] Solhint: 56:1   warning  Missing @author tag in contract 'ArbitrageFlashLoaner'                                                                                                           use-natspec
+597. [ArbitrageFlashLoaner] Solhint: 56:1   warning  Missing @notice tag in contract 'ArbitrageFlashLoaner'                                                                                                           use-natspec
+598. [ArbitrageFlashLoaner] Solhint: 57:5   warning  Missing @notice tag in variable 'owner'                                                                                                                          use-natspec
+599. [ArbitrageFlashLoaner] Solhint: 59:5   warning  Missing @notice tag in event 'ArbitrageExecuted'                                                                                                                 use-natspec
+600. [ArbitrageFlashLoaner] Solhint: 59:5   warning  Missing @param tag in event 'ArbitrageExecuted'                                                                                                                  use-natspec
+601. [ArbitrageFlashLoaner] Solhint: 59:5   warning  Mismatch in @param names for event 'ArbitrageExecuted'. Expected: [tokenIn, tokenOut, amount], Found: []                                                         use-natspec
+602. [ArbitrageFlashLoaner] Solhint: 59:5   warning  GC: [amount] on Event [ArbitrageExecuted] could be Indexed                                                                                                       gas-indexed-events
+603. [ArbitrageFlashLoaner] Solhint: 60:5   warning  Missing @notice tag in event 'OwnerUpdated'                                                                                                                      use-natspec
+604. [ArbitrageFlashLoaner] Solhint: 60:5   warning  Missing @param tag in event 'OwnerUpdated'                                                                                                                       use-natspec
+605. [ArbitrageFlashLoaner] Solhint: 60:5   warning  Mismatch in @param names for event 'OwnerUpdated'. Expected: [oldOwner, newOwner], Found: []                                                                     use-natspec
+606. [ArbitrageFlashLoaner] Solhint: 61:5   warning  Missing @notice tag in event 'EtherWithdrawn'                                                                                                                    use-natspec
+607. [ArbitrageFlashLoaner] Solhint: 61:5   warning  Missing @param tag in event 'EtherWithdrawn'                                                                                                                     use-natspec
+608. [ArbitrageFlashLoaner] Solhint: 61:5   warning  Mismatch in @param names for event 'EtherWithdrawn'. Expected: [owner, amount], Found: []                                                                        use-natspec
+609. [ArbitrageFlashLoaner] Solhint: 61:5   warning  GC: [amount] on Event [EtherWithdrawn] could be Indexed                                                                                                          gas-indexed-events
+610. [ArbitrageFlashLoaner] Solhint: 62:5   warning  Missing @notice tag in event 'TokenWithdrawn'                                                                                                                    use-natspec
+611. [ArbitrageFlashLoaner] Solhint: 62:5   warning  Missing @param tag in event 'TokenWithdrawn'                                                                                                                     use-natspec
+612. [ArbitrageFlashLoaner] Solhint: 62:5   warning  Mismatch in @param names for event 'TokenWithdrawn'. Expected: [owner, token, amount], Found: []                                                                 use-natspec
+613. [ArbitrageFlashLoaner] Solhint: 62:5   warning  GC: [amount] on Event [TokenWithdrawn] could be Indexed                                                                                                          gas-indexed-events
+614. [ArbitrageFlashLoaner] Solhint: 64:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+615. [ArbitrageFlashLoaner] Solhint: 69:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+616. [ArbitrageFlashLoaner] Solhint: 73:5   warning  Missing @notice tag in function 'executeArbitrage'                                                                                                               use-natspec
+617. [ArbitrageFlashLoaner] Solhint: 73:5   warning  Missing @param tag in function 'executeArbitrage'                                                                                                                use-natspec
+618. [ArbitrageFlashLoaner] Solhint: 73:5   warning  Mismatch in @param names for function 'executeArbitrage'. Expected: [tokenIn, tokenOut, amount], Found: []                                                       use-natspec
+619. [ArbitrageFlashLoaner] Solhint: 78:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+620. [ArbitrageFlashLoaner] Solhint: 107:5   warning  Missing @notice tag in function 'executeOperation'                                                                                                               use-natspec
+621. [ArbitrageFlashLoaner] Solhint: 107:5   warning  Missing @param tag in function 'executeOperation'                                                                                                                use-natspec
+622. [ArbitrageFlashLoaner] Solhint: 107:5   warning  Mismatch in @param count for function 'executeOperation'. Expected: 5, Found: 0                                                                                  use-natspec
+623. [ArbitrageFlashLoaner] Solhint: 107:5   warning  Missing @return tag in function 'executeOperation'                                                                                                               use-natspec
+624. [ArbitrageFlashLoaner] Solhint: 107:5   warning  Mismatch in @return count for function 'executeOperation'. Expected: 1, Found: 0                                                                                 use-natspec
+625. [ArbitrageFlashLoaner] Solhint: 114:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+626. [ArbitrageFlashLoaner] Solhint: 117:14  warning  Rule is set with explicit type [var/s: uint]                                                                                                                     explicit-types
+627. [ArbitrageFlashLoaner] Solhint: 117:45  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                                                               gas-increment-by-one
+628. [ArbitrageFlashLoaner] Solhint: 119:13  warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+629. [ArbitrageFlashLoaner] Solhint: 128:5   warning  Missing @notice tag in function '<anonymous>'                                                                                                                    use-natspec
+630. [ArbitrageFlashLoaner] Solhint: 130:5   warning  Missing @notice tag in function 'setOwner'                                                                                                                       use-natspec
+631. [ArbitrageFlashLoaner] Solhint: 130:5   warning  Missing @param tag in function 'setOwner'                                                                                                                        use-natspec
+632. [ArbitrageFlashLoaner] Solhint: 130:5   warning  Mismatch in @param names for function 'setOwner'. Expected: [newOwner], Found: []                                                                                use-natspec
+633. [ArbitrageFlashLoaner] Solhint: 131:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+634. [ArbitrageFlashLoaner] Solhint: 137:5   warning  Missing @notice tag in function 'withdrawEther'                                                                                                                  use-natspec
+635. [ArbitrageFlashLoaner] Solhint: 139:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+636. [ArbitrageFlashLoaner] Solhint: 144:5   warning  Missing @notice tag in function 'withdrawToken'                                                                                                                  use-natspec
+637. [ArbitrageFlashLoaner] Solhint: 144:5   warning  Missing @param tag in function 'withdrawToken'                                                                                                                   use-natspec
+638. [ArbitrageFlashLoaner] Solhint: 144:5   warning  Mismatch in @param names for function 'withdrawToken'. Expected: [tokenAddress], Found: []                                                                       use-natspec
+639. [ArbitrageFlashLoaner] Solhint: 147:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+640. [ArbitrageFlashLoaner] Solhint: 148:9   warning  GC: Use Custom Errors instead of require statements                                                                                                              gas-custom-errors
+641. [ArbitrageFlashLoaner] Solhint: ✖ 100 problems (0 errors, 100 warnings)
+642. [BoredApe] Solhint: 2:1   warning  Found more than One contract per file. 12 contracts found!                                                          one-contract-per-file
+643. [BoredApe] Solhint: 2:1   warning  Compiler version ^0.8.9 does not satisfy the ^0.8.24 semver requirement                                             compiler-version
+644. [BoredApe] Solhint: 5:1   warning  Missing @title tag in contract 'Context'                                                                            use-natspec
+645. [BoredApe] Solhint: 5:1   warning  Missing @author tag in contract 'Context'                                                                           use-natspec
+646. [BoredApe] Solhint: 5:1   warning  Missing @notice tag in contract 'Context'                                                                           use-natspec
+647. [BoredApe] Solhint: 6:5   warning  Missing @notice tag in function '_msgSender'                                                                        use-natspec
+648. [BoredApe] Solhint: 6:5   warning  Missing @return tag in function '_msgSender'                                                                        use-natspec
+649. [BoredApe] Solhint: 6:5   warning  Mismatch in @return count for function '_msgSender'. Expected: 1, Found: 0                                          use-natspec
+650. [BoredApe] Solhint: 10:5   warning  Missing @notice tag in function '_msgData'                                                                          use-natspec
+651. [BoredApe] Solhint: 10:5   warning  Missing @return tag in function '_msgData'                                                                          use-natspec
+652. [BoredApe] Solhint: 10:5   warning  Mismatch in @return count for function '_msgData'. Expected: 1, Found: 0                                            use-natspec
+653. [BoredApe] Solhint: 15:1   warning  Missing @title tag in contract 'Ownable'                                                                            use-natspec
+654. [BoredApe] Solhint: 15:1   warning  Missing @author tag in contract 'Ownable'                                                                           use-natspec
+655. [BoredApe] Solhint: 15:1   warning  Missing @notice tag in contract 'Ownable'                                                                           use-natspec
+656. [BoredApe] Solhint: 18:5   warning  Missing @notice tag in event 'OwnershipTransferred'                                                                 use-natspec
+657. [BoredApe] Solhint: 18:5   warning  Missing @param tag in event 'OwnershipTransferred'                                                                  use-natspec
+658. [BoredApe] Solhint: 18:5   warning  Mismatch in @param names for event 'OwnershipTransferred'. Expected: [previousOwner, newOwner], Found: []           use-natspec
+659. [BoredApe] Solhint: 20:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+660. [BoredApe] Solhint: 29:5   warning  Missing @notice tag in function 'owner'                                                                             use-natspec
+661. [BoredApe] Solhint: 29:5   warning  Missing @return tag in function 'owner'                                                                             use-natspec
+662. [BoredApe] Solhint: 29:5   warning  Mismatch in @return count for function 'owner'. Expected: 1, Found: 0                                               use-natspec
+663. [BoredApe] Solhint: 33:5   warning  Missing @notice tag in function '_checkOwner'                                                                       use-natspec
+664. [BoredApe] Solhint: 34:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+665. [BoredApe] Solhint: 37:5   warning  Missing @notice tag in function '_transferOwnership'                                                                use-natspec
+666. [BoredApe] Solhint: 37:5   warning  Missing @param tag in function '_transferOwnership'                                                                 use-natspec
+667. [BoredApe] Solhint: 37:5   warning  Mismatch in @param names for function '_transferOwnership'. Expected: [newOwner], Found: []                         use-natspec
+668. [BoredApe] Solhint: 44:1   warning  Missing @title tag in contract 'IERC165'                                                                            use-natspec
+669. [BoredApe] Solhint: 44:1   warning  Missing @author tag in contract 'IERC165'                                                                           use-natspec
+670. [BoredApe] Solhint: 44:1   warning  Missing @notice tag in contract 'IERC165'                                                                           use-natspec
+671. [BoredApe] Solhint: 45:5   warning  Missing @notice tag in function 'supportsInterface'                                                                 use-natspec
+672. [BoredApe] Solhint: 45:5   warning  Missing @param tag in function 'supportsInterface'                                                                  use-natspec
+673. [BoredApe] Solhint: 45:5   warning  Mismatch in @param names for function 'supportsInterface'. Expected: [interfaceId], Found: []                       use-natspec
+674. [BoredApe] Solhint: 45:5   warning  Missing @return tag in function 'supportsInterface'                                                                 use-natspec
+675. [BoredApe] Solhint: 45:5   warning  Mismatch in @return count for function 'supportsInterface'. Expected: 1, Found: 0                                   use-natspec
+676. [BoredApe] Solhint: 48:1   warning  Missing @title tag in contract 'IERC721'                                                                            use-natspec
+677. [BoredApe] Solhint: 48:1   warning  Missing @author tag in contract 'IERC721'                                                                           use-natspec
+678. [BoredApe] Solhint: 48:1   warning  Missing @notice tag in contract 'IERC721'                                                                           use-natspec
+679. [BoredApe] Solhint: 49:5   warning  Missing @notice tag in event 'Transfer'                                                                             use-natspec
+680. [BoredApe] Solhint: 49:5   warning  Missing @param tag in event 'Transfer'                                                                              use-natspec
+681. [BoredApe] Solhint: 49:5   warning  Mismatch in @param names for event 'Transfer'. Expected: [from, to, tokenId], Found: []                             use-natspec
+682. [BoredApe] Solhint: 50:5   warning  Missing @notice tag in event 'Approval'                                                                             use-natspec
+683. [BoredApe] Solhint: 50:5   warning  Missing @param tag in event 'Approval'                                                                              use-natspec
+684. [BoredApe] Solhint: 50:5   warning  Mismatch in @param names for event 'Approval'. Expected: [owner, approved, tokenId], Found: []                      use-natspec
+685. [BoredApe] Solhint: 51:5   warning  Missing @notice tag in event 'ApprovalForAll'                                                                       use-natspec
+686. [BoredApe] Solhint: 51:5   warning  Missing @param tag in event 'ApprovalForAll'                                                                        use-natspec
+687. [BoredApe] Solhint: 51:5   warning  Mismatch in @param names for event 'ApprovalForAll'. Expected: [owner, operator, approved], Found: []               use-natspec
+688. [BoredApe] Solhint: 51:5   warning  GC: [approved] on Event [ApprovalForAll] could be Indexed                                                           gas-indexed-events
+689. [BoredApe] Solhint: 52:5   warning  Missing @notice tag in function 'balanceOf'                                                                         use-natspec
+690. [BoredApe] Solhint: 52:5   warning  Missing @param tag in function 'balanceOf'                                                                          use-natspec
+691. [BoredApe] Solhint: 52:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [owner], Found: []                                     use-natspec
+692. [BoredApe] Solhint: 52:5   warning  Missing @return tag in function 'balanceOf'                                                                         use-natspec
+693. [BoredApe] Solhint: 52:5   warning  Mismatch in @return names for function 'balanceOf'. Expected: [balance], Found: []                                  use-natspec
+694. [BoredApe] Solhint: 53:5   warning  Missing @notice tag in function 'ownerOf'                                                                           use-natspec
+695. [BoredApe] Solhint: 53:5   warning  Missing @param tag in function 'ownerOf'                                                                            use-natspec
+696. [BoredApe] Solhint: 53:5   warning  Mismatch in @param names for function 'ownerOf'. Expected: [tokenId], Found: []                                     use-natspec
+697. [BoredApe] Solhint: 53:5   warning  Missing @return tag in function 'ownerOf'                                                                           use-natspec
+698. [BoredApe] Solhint: 53:5   warning  Mismatch in @return names for function 'ownerOf'. Expected: [owner], Found: []                                      use-natspec
+699. [BoredApe] Solhint: 54:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+700. [BoredApe] Solhint: 54:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+701. [BoredApe] Solhint: 54:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId], Found: []                  use-natspec
+702. [BoredApe] Solhint: 55:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+703. [BoredApe] Solhint: 55:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+704. [BoredApe] Solhint: 55:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId, data], Found: []            use-natspec
+705. [BoredApe] Solhint: 56:5   warning  Missing @notice tag in function 'transferFrom'                                                                      use-natspec
+706. [BoredApe] Solhint: 56:5   warning  Missing @param tag in function 'transferFrom'                                                                       use-natspec
+707. [BoredApe] Solhint: 56:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, tokenId], Found: []                      use-natspec
+708. [BoredApe] Solhint: 57:5   warning  Missing @notice tag in function 'approve'                                                                           use-natspec
+709. [BoredApe] Solhint: 57:5   warning  Missing @param tag in function 'approve'                                                                            use-natspec
+710. [BoredApe] Solhint: 57:5   warning  Mismatch in @param names for function 'approve'. Expected: [to, tokenId], Found: []                                 use-natspec
+711. [BoredApe] Solhint: 58:5   warning  Missing @notice tag in function 'setApprovalForAll'                                                                 use-natspec
+712. [BoredApe] Solhint: 58:5   warning  Missing @param tag in function 'setApprovalForAll'                                                                  use-natspec
+713. [BoredApe] Solhint: 58:5   warning  Mismatch in @param names for function 'setApprovalForAll'. Expected: [operator, approved], Found: []                use-natspec
+714. [BoredApe] Solhint: 59:5   warning  Missing @notice tag in function 'getApproved'                                                                       use-natspec
+715. [BoredApe] Solhint: 59:5   warning  Missing @param tag in function 'getApproved'                                                                        use-natspec
+716. [BoredApe] Solhint: 59:5   warning  Mismatch in @param names for function 'getApproved'. Expected: [tokenId], Found: []                                 use-natspec
+717. [BoredApe] Solhint: 59:5   warning  Missing @return tag in function 'getApproved'                                                                       use-natspec
+718. [BoredApe] Solhint: 59:5   warning  Mismatch in @return names for function 'getApproved'. Expected: [operator], Found: []                               use-natspec
+719. [BoredApe] Solhint: 60:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+720. [BoredApe] Solhint: 60:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+721. [BoredApe] Solhint: 60:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+722. [BoredApe] Solhint: 60:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+723. [BoredApe] Solhint: 60:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+724. [BoredApe] Solhint: 63:1   warning  Missing @title tag in contract 'IERC721Metadata'                                                                    use-natspec
+725. [BoredApe] Solhint: 63:1   warning  Missing @author tag in contract 'IERC721Metadata'                                                                   use-natspec
+726. [BoredApe] Solhint: 63:1   warning  Missing @notice tag in contract 'IERC721Metadata'                                                                   use-natspec
+727. [BoredApe] Solhint: 64:5   warning  Missing @notice tag in function 'name'                                                                              use-natspec
+728. [BoredApe] Solhint: 64:5   warning  Missing @return tag in function 'name'                                                                              use-natspec
+729. [BoredApe] Solhint: 64:5   warning  Mismatch in @return count for function 'name'. Expected: 1, Found: 0                                                use-natspec
+730. [BoredApe] Solhint: 65:5   warning  Missing @notice tag in function 'symbol'                                                                            use-natspec
+731. [BoredApe] Solhint: 65:5   warning  Missing @return tag in function 'symbol'                                                                            use-natspec
+732. [BoredApe] Solhint: 65:5   warning  Mismatch in @return count for function 'symbol'. Expected: 1, Found: 0                                              use-natspec
+733. [BoredApe] Solhint: 66:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+734. [BoredApe] Solhint: 66:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+735. [BoredApe] Solhint: 66:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+736. [BoredApe] Solhint: 66:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+737. [BoredApe] Solhint: 66:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+738. [BoredApe] Solhint: 69:1   warning  Missing @title tag in contract 'ERC721'                                                                             use-natspec
+739. [BoredApe] Solhint: 69:1   warning  Missing @author tag in contract 'ERC721'                                                                            use-natspec
+740. [BoredApe] Solhint: 69:1   warning  Missing @notice tag in contract 'ERC721'                                                                            use-natspec
+741. [BoredApe] Solhint: 77:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+742. [BoredApe] Solhint: 77:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+743. [BoredApe] Solhint: 77:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [name_, symbol_], Found: []                          use-natspec
+744. [BoredApe] Solhint: 82:5   warning  Missing @notice tag in function 'supportsInterface'                                                                 use-natspec
+745. [BoredApe] Solhint: 82:5   warning  Missing @param tag in function 'supportsInterface'                                                                  use-natspec
+746. [BoredApe] Solhint: 82:5   warning  Mismatch in @param names for function 'supportsInterface'. Expected: [interfaceId], Found: []                       use-natspec
+747. [BoredApe] Solhint: 82:5   warning  Missing @return tag in function 'supportsInterface'                                                                 use-natspec
+748. [BoredApe] Solhint: 82:5   warning  Mismatch in @return count for function 'supportsInterface'. Expected: 1, Found: 0                                   use-natspec
+749. [BoredApe] Solhint: 89:5   warning  Missing @notice tag in function 'balanceOf'                                                                         use-natspec
+750. [BoredApe] Solhint: 89:5   warning  Missing @param tag in function 'balanceOf'                                                                          use-natspec
+751. [BoredApe] Solhint: 89:5   warning  Mismatch in @param names for function 'balanceOf'. Expected: [owner], Found: []                                     use-natspec
+752. [BoredApe] Solhint: 89:5   warning  Missing @return tag in function 'balanceOf'                                                                         use-natspec
+753. [BoredApe] Solhint: 89:5   warning  Mismatch in @return count for function 'balanceOf'. Expected: 1, Found: 0                                           use-natspec
+754. [BoredApe] Solhint: 90:9   warning  Error message for require is too long: 41 counted / 32 allowed                                                      reason-string
+755. [BoredApe] Solhint: 90:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+756. [BoredApe] Solhint: 90:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+757. [BoredApe] Solhint: 94:5   warning  Missing @notice tag in function 'ownerOf'                                                                           use-natspec
+758. [BoredApe] Solhint: 94:5   warning  Missing @param tag in function 'ownerOf'                                                                            use-natspec
+759. [BoredApe] Solhint: 94:5   warning  Mismatch in @param names for function 'ownerOf'. Expected: [tokenId], Found: []                                     use-natspec
+760. [BoredApe] Solhint: 94:5   warning  Missing @return tag in function 'ownerOf'                                                                           use-natspec
+761. [BoredApe] Solhint: 94:5   warning  Mismatch in @return count for function 'ownerOf'. Expected: 1, Found: 0                                             use-natspec
+762. [BoredApe] Solhint: 96:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+763. [BoredApe] Solhint: 100:5   warning  Missing @notice tag in function '_ownerOf'                                                                          use-natspec
+764. [BoredApe] Solhint: 100:5   warning  Missing @param tag in function '_ownerOf'                                                                           use-natspec
+765. [BoredApe] Solhint: 100:5   warning  Mismatch in @param names for function '_ownerOf'. Expected: [tokenId], Found: []                                    use-natspec
+766. [BoredApe] Solhint: 100:5   warning  Missing @return tag in function '_ownerOf'                                                                          use-natspec
+767. [BoredApe] Solhint: 100:5   warning  Mismatch in @return count for function '_ownerOf'. Expected: 1, Found: 0                                            use-natspec
+768. [BoredApe] Solhint: 104:5   warning  Missing @notice tag in function 'name'                                                                              use-natspec
+769. [BoredApe] Solhint: 104:5   warning  Missing @return tag in function 'name'                                                                              use-natspec
+770. [BoredApe] Solhint: 104:5   warning  Mismatch in @return count for function 'name'. Expected: 1, Found: 0                                                use-natspec
+771. [BoredApe] Solhint: 108:5   warning  Missing @notice tag in function 'symbol'                                                                            use-natspec
+772. [BoredApe] Solhint: 108:5   warning  Missing @return tag in function 'symbol'                                                                            use-natspec
+773. [BoredApe] Solhint: 108:5   warning  Mismatch in @return count for function 'symbol'. Expected: 1, Found: 0                                              use-natspec
+774. [BoredApe] Solhint: 112:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+775. [BoredApe] Solhint: 112:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+776. [BoredApe] Solhint: 112:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+777. [BoredApe] Solhint: 112:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+778. [BoredApe] Solhint: 112:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+779. [BoredApe] Solhint: 113:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+780. [BoredApe] Solhint: 117:5   warning  Missing @notice tag in function 'approve'                                                                           use-natspec
+781. [BoredApe] Solhint: 117:5   warning  Missing @param tag in function 'approve'                                                                            use-natspec
+782. [BoredApe] Solhint: 117:5   warning  Mismatch in @param names for function 'approve'. Expected: [to, tokenId], Found: []                                 use-natspec
+783. [BoredApe] Solhint: 119:9   warning  Error message for require is too long: 33 counted / 32 allowed                                                      reason-string
+784. [BoredApe] Solhint: 119:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+785. [BoredApe] Solhint: 119:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+786. [BoredApe] Solhint: 120:2   warning  Line length must be no more than 120 but current length is 132                                                      max-line-length
+787. [BoredApe] Solhint: 120:9   warning  Error message for require is too long: 48 counted / 32 allowed                                                      reason-string
+788. [BoredApe] Solhint: 120:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+789. [BoredApe] Solhint: 120:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+790. [BoredApe] Solhint: 124:5   warning  Missing @notice tag in function 'getApproved'                                                                       use-natspec
+791. [BoredApe] Solhint: 124:5   warning  Missing @param tag in function 'getApproved'                                                                        use-natspec
+792. [BoredApe] Solhint: 124:5   warning  Mismatch in @param names for function 'getApproved'. Expected: [tokenId], Found: []                                 use-natspec
+793. [BoredApe] Solhint: 124:5   warning  Missing @return tag in function 'getApproved'                                                                       use-natspec
+794. [BoredApe] Solhint: 124:5   warning  Mismatch in @return count for function 'getApproved'. Expected: 1, Found: 0                                         use-natspec
+795. [BoredApe] Solhint: 125:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+796. [BoredApe] Solhint: 129:5   warning  Missing @notice tag in function 'setApprovalForAll'                                                                 use-natspec
+797. [BoredApe] Solhint: 129:5   warning  Missing @param tag in function 'setApprovalForAll'                                                                  use-natspec
+798. [BoredApe] Solhint: 129:5   warning  Mismatch in @param names for function 'setApprovalForAll'. Expected: [operator, approved], Found: []                use-natspec
+799. [BoredApe] Solhint: 130:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+800. [BoredApe] Solhint: 135:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+801. [BoredApe] Solhint: 135:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+802. [BoredApe] Solhint: 135:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+803. [BoredApe] Solhint: 135:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+804. [BoredApe] Solhint: 135:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+805. [BoredApe] Solhint: 139:5   warning  Missing @notice tag in function 'transferFrom'                                                                      use-natspec
+806. [BoredApe] Solhint: 139:5   warning  Missing @param tag in function 'transferFrom'                                                                       use-natspec
+807. [BoredApe] Solhint: 139:5   warning  Mismatch in @param names for function 'transferFrom'. Expected: [from, to, tokenId], Found: []                      use-natspec
+808. [BoredApe] Solhint: 140:9   warning  Error message for require is too long: 40 counted / 32 allowed                                                      reason-string
+809. [BoredApe] Solhint: 140:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+810. [BoredApe] Solhint: 140:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+811. [BoredApe] Solhint: 144:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+812. [BoredApe] Solhint: 144:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+813. [BoredApe] Solhint: 144:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId], Found: []                  use-natspec
+814. [BoredApe] Solhint: 148:5   warning  Missing @notice tag in function 'safeTransferFrom'                                                                  use-natspec
+815. [BoredApe] Solhint: 148:5   warning  Missing @param tag in function 'safeTransferFrom'                                                                   use-natspec
+816. [BoredApe] Solhint: 148:5   warning  Mismatch in @param names for function 'safeTransferFrom'. Expected: [from, to, tokenId, data], Found: []            use-natspec
+817. [BoredApe] Solhint: 149:9   warning  Error message for require is too long: 40 counted / 32 allowed                                                      reason-string
+818. [BoredApe] Solhint: 149:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+819. [BoredApe] Solhint: 149:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+820. [BoredApe] Solhint: 153:5   warning  Missing @notice tag in function '_safeTransfer'                                                                     use-natspec
+821. [BoredApe] Solhint: 153:5   warning  Missing @param tag in function '_safeTransfer'                                                                      use-natspec
+822. [BoredApe] Solhint: 153:5   warning  Mismatch in @param names for function '_safeTransfer'. Expected: [from, to, tokenId, data], Found: []               use-natspec
+823. [BoredApe] Solhint: 155:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+824. [BoredApe] Solhint: 155:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+825. [BoredApe] Solhint: 155:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+826. [BoredApe] Solhint: 158:5   warning  Missing @notice tag in function '_isApprovedOrOwner'                                                                use-natspec
+827. [BoredApe] Solhint: 158:5   warning  Missing @param tag in function '_isApprovedOrOwner'                                                                 use-natspec
+828. [BoredApe] Solhint: 158:5   warning  Mismatch in @param names for function '_isApprovedOrOwner'. Expected: [spender, tokenId], Found: []                 use-natspec
+829. [BoredApe] Solhint: 158:5   warning  Missing @return tag in function '_isApprovedOrOwner'                                                                use-natspec
+830. [BoredApe] Solhint: 158:5   warning  Mismatch in @return count for function '_isApprovedOrOwner'. Expected: 1, Found: 0                                  use-natspec
+831. [BoredApe] Solhint: 163:5   warning  Missing @notice tag in function '_safeMint'                                                                         use-natspec
+832. [BoredApe] Solhint: 163:5   warning  Missing @param tag in function '_safeMint'                                                                          use-natspec
+833. [BoredApe] Solhint: 163:5   warning  Mismatch in @param names for function '_safeMint'. Expected: [to, tokenId], Found: []                               use-natspec
+834. [BoredApe] Solhint: 167:5   warning  Missing @notice tag in function '_safeMint'                                                                         use-natspec
+835. [BoredApe] Solhint: 167:5   warning  Missing @param tag in function '_safeMint'                                                                          use-natspec
+836. [BoredApe] Solhint: 167:5   warning  Mismatch in @param names for function '_safeMint'. Expected: [to, tokenId, data], Found: []                         use-natspec
+837. [BoredApe] Solhint: 169:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+838. [BoredApe] Solhint: 169:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+839. [BoredApe] Solhint: 169:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+840. [BoredApe] Solhint: 172:5   warning  Missing @notice tag in function '_mint'                                                                             use-natspec
+841. [BoredApe] Solhint: 172:5   warning  Missing @param tag in function '_mint'                                                                              use-natspec
+842. [BoredApe] Solhint: 172:5   warning  Mismatch in @param names for function '_mint'. Expected: [to, tokenId], Found: []                                   use-natspec
+843. [BoredApe] Solhint: 173:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+844. [BoredApe] Solhint: 174:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+845. [BoredApe] Solhint: 175:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+846. [BoredApe] Solhint: 180:5   warning  Missing @notice tag in function '_transfer'                                                                         use-natspec
+847. [BoredApe] Solhint: 180:5   warning  Missing @param tag in function '_transfer'                                                                          use-natspec
+848. [BoredApe] Solhint: 180:5   warning  Mismatch in @param names for function '_transfer'. Expected: [from, to, tokenId], Found: []                         use-natspec
+849. [BoredApe] Solhint: 181:9   warning  Error message for require is too long: 37 counted / 32 allowed                                                      reason-string
+850. [BoredApe] Solhint: 181:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+851. [BoredApe] Solhint: 181:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+852. [BoredApe] Solhint: 182:9   warning  Error message for require is too long: 36 counted / 32 allowed                                                      reason-string
+853. [BoredApe] Solhint: 182:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+854. [BoredApe] Solhint: 182:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+855. [BoredApe] Solhint: 184:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+856. [BoredApe] Solhint: 185:9   warning  GC: For [ _balances ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                          gas-increment-by-one
+857. [BoredApe] Solhint: 190:5   warning  Missing @notice tag in function '_approve'                                                                          use-natspec
+858. [BoredApe] Solhint: 190:5   warning  Missing @param tag in function '_approve'                                                                           use-natspec
+859. [BoredApe] Solhint: 190:5   warning  Mismatch in @param names for function '_approve'. Expected: [to, tokenId], Found: []                                use-natspec
+860. [BoredApe] Solhint: 195:2   warning  Line length must be no more than 120 but current length is 122                                                      max-line-length
+861. [BoredApe] Solhint: 195:5   warning  Missing @notice tag in function '_checkOnERC721Received'                                                            use-natspec
+862. [BoredApe] Solhint: 195:5   warning  Missing @param tag in function '_checkOnERC721Received'                                                             use-natspec
+863. [BoredApe] Solhint: 195:5   warning  Mismatch in @param names for function '_checkOnERC721Received'. Expected: [from, to, tokenId, data], Found: []      use-natspec
+864. [BoredApe] Solhint: 195:5   warning  Missing @return tag in function '_checkOnERC721Received'                                                            use-natspec
+865. [BoredApe] Solhint: 195:5   warning  Mismatch in @return count for function '_checkOnERC721Received'. Expected: 1, Found: 0                              use-natspec
+866. [BoredApe] Solhint: 207:1   warning  Missing @title tag in contract 'IERC721Receiver'                                                                    use-natspec
+867. [BoredApe] Solhint: 207:1   warning  Missing @author tag in contract 'IERC721Receiver'                                                                   use-natspec
+868. [BoredApe] Solhint: 207:1   warning  Missing @notice tag in contract 'IERC721Receiver'                                                                   use-natspec
+869. [BoredApe] Solhint: 208:2   warning  Line length must be no more than 120 but current length is 126                                                      max-line-length
+870. [BoredApe] Solhint: 208:5   warning  Missing @notice tag in function 'onERC721Received'                                                                  use-natspec
+871. [BoredApe] Solhint: 208:5   warning  Missing @param tag in function 'onERC721Received'                                                                   use-natspec
+872. [BoredApe] Solhint: 208:5   warning  Mismatch in @param names for function 'onERC721Received'. Expected: [operator, from, tokenId, data], Found: []      use-natspec
+873. [BoredApe] Solhint: 208:5   warning  Missing @return tag in function 'onERC721Received'                                                                  use-natspec
+874. [BoredApe] Solhint: 208:5   warning  Mismatch in @return count for function 'onERC721Received'. Expected: 1, Found: 0                                    use-natspec
+875. [BoredApe] Solhint: 212:1   warning  Missing @title tag in contract 'ReentrancyGuard'                                                                    use-natspec
+876. [BoredApe] Solhint: 212:1   warning  Missing @author tag in contract 'ReentrancyGuard'                                                                   use-natspec
+877. [BoredApe] Solhint: 212:1   warning  Missing @notice tag in contract 'ReentrancyGuard'                                                                   use-natspec
+878. [BoredApe] Solhint: 217:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+879. [BoredApe] Solhint: 222:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+880. [BoredApe] Solhint: 230:1   warning  Missing @title tag in contract 'PaymentSplitter'                                                                    use-natspec
+881. [BoredApe] Solhint: 230:1   warning  Missing @author tag in contract 'PaymentSplitter'                                                                   use-natspec
+882. [BoredApe] Solhint: 230:1   warning  Missing @notice tag in contract 'PaymentSplitter'                                                                   use-natspec
+883. [BoredApe] Solhint: 231:5   warning  Missing @notice tag in event 'PayeeAdded'                                                                           use-natspec
+884. [BoredApe] Solhint: 231:5   warning  Missing @param tag in event 'PayeeAdded'                                                                            use-natspec
+885. [BoredApe] Solhint: 231:5   warning  Mismatch in @param names for event 'PayeeAdded'. Expected: [account, shares], Found: []                             use-natspec
+886. [BoredApe] Solhint: 231:5   warning  GC: [account] on Event [PayeeAdded] could be Indexed                                                                gas-indexed-events
+887. [BoredApe] Solhint: 231:5   warning  GC: [shares] on Event [PayeeAdded] could be Indexed                                                                 gas-indexed-events
+888. [BoredApe] Solhint: 232:5   warning  Missing @notice tag in event 'PaymentReleased'                                                                      use-natspec
+889. [BoredApe] Solhint: 232:5   warning  Missing @param tag in event 'PaymentReleased'                                                                       use-natspec
+890. [BoredApe] Solhint: 232:5   warning  Mismatch in @param names for event 'PaymentReleased'. Expected: [to, amount], Found: []                             use-natspec
+891. [BoredApe] Solhint: 232:5   warning  GC: [to] on Event [PaymentReleased] could be Indexed                                                                gas-indexed-events
+892. [BoredApe] Solhint: 232:5   warning  GC: [amount] on Event [PaymentReleased] could be Indexed                                                            gas-indexed-events
+893. [BoredApe] Solhint: 233:5   warning  Missing @notice tag in event 'PaymentReceived'                                                                      use-natspec
+894. [BoredApe] Solhint: 233:5   warning  Missing @param tag in event 'PaymentReceived'                                                                       use-natspec
+895. [BoredApe] Solhint: 233:5   warning  Mismatch in @param names for event 'PaymentReceived'. Expected: [from, amount], Found: []                           use-natspec
+896. [BoredApe] Solhint: 233:5   warning  GC: [from] on Event [PaymentReceived] could be Indexed                                                              gas-indexed-events
+897. [BoredApe] Solhint: 233:5   warning  GC: [amount] on Event [PaymentReceived] could be Indexed                                                            gas-indexed-events
+898. [BoredApe] Solhint: 241:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+899. [BoredApe] Solhint: 241:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+900. [BoredApe] Solhint: 241:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [payees, shares_], Found: []                         use-natspec
+901. [BoredApe] Solhint: 242:9   warning  Error message for require is too long: 50 counted / 32 allowed                                                      reason-string
+902. [BoredApe] Solhint: 242:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+903. [BoredApe] Solhint: 242:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+904. [BoredApe] Solhint: 243:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+905. [BoredApe] Solhint: 244:48  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+906. [BoredApe] Solhint: 249:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+907. [BoredApe] Solhint: 253:5   warning  Missing @notice tag in function 'release'                                                                           use-natspec
+908. [BoredApe] Solhint: 253:5   warning  Missing @param tag in function 'release'                                                                            use-natspec
+909. [BoredApe] Solhint: 253:5   warning  Mismatch in @param names for function 'release'. Expected: [account], Found: []                                     use-natspec
+910. [BoredApe] Solhint: 254:9   warning  Error message for require is too long: 38 counted / 32 allowed                                                      reason-string
+911. [BoredApe] Solhint: 254:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+912. [BoredApe] Solhint: 254:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+913. [BoredApe] Solhint: 257:9   warning  Error message for require is too long: 43 counted / 32 allowed                                                      reason-string
+914. [BoredApe] Solhint: 257:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+915. [BoredApe] Solhint: 257:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+916. [BoredApe] Solhint: 264:5   warning  Missing @notice tag in function '_addPayee'                                                                         use-natspec
+917. [BoredApe] Solhint: 264:5   warning  Missing @param tag in function '_addPayee'                                                                          use-natspec
+918. [BoredApe] Solhint: 264:5   warning  Mismatch in @param names for function '_addPayee'. Expected: [account, shares_], Found: []                          use-natspec
+919. [BoredApe] Solhint: 265:9   warning  Error message for require is too long: 44 counted / 32 allowed                                                      reason-string
+920. [BoredApe] Solhint: 265:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+921. [BoredApe] Solhint: 265:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+922. [BoredApe] Solhint: 266:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+923. [BoredApe] Solhint: 267:9   warning  Error message for require is too long: 43 counted / 32 allowed                                                      reason-string
+924. [BoredApe] Solhint: 267:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+925. [BoredApe] Solhint: 267:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+926. [BoredApe] Solhint: 275:1   warning  Missing @title tag in contract 'Address'                                                                            use-natspec
+927. [BoredApe] Solhint: 275:1   warning  Missing @author tag in contract 'Address'                                                                           use-natspec
+928. [BoredApe] Solhint: 275:1   warning  Missing @notice tag in contract 'Address'                                                                           use-natspec
+929. [BoredApe] Solhint: 276:5   warning  Missing @notice tag in function 'sendValue'                                                                         use-natspec
+930. [BoredApe] Solhint: 276:5   warning  Missing @param tag in function 'sendValue'                                                                          use-natspec
+931. [BoredApe] Solhint: 276:5   warning  Mismatch in @param names for function 'sendValue'. Expected: [recipient, amount], Found: []                         use-natspec
+932. [BoredApe] Solhint: 277:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+933. [BoredApe] Solhint: 277:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+934. [BoredApe] Solhint: 279:9   warning  Error message for require is too long: 58 counted / 32 allowed                                                      reason-string
+935. [BoredApe] Solhint: 279:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+936. [BoredApe] Solhint: 279:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+937. [BoredApe] Solhint: 284:1   warning  Missing @title tag in contract 'MerkleProof'                                                                        use-natspec
+938. [BoredApe] Solhint: 284:1   warning  Missing @author tag in contract 'MerkleProof'                                                                       use-natspec
+939. [BoredApe] Solhint: 284:1   warning  Missing @notice tag in contract 'MerkleProof'                                                                       use-natspec
+940. [BoredApe] Solhint: 285:5   warning  Missing @notice tag in function 'verify'                                                                            use-natspec
+941. [BoredApe] Solhint: 285:5   warning  Missing @param tag in function 'verify'                                                                             use-natspec
+942. [BoredApe] Solhint: 285:5   warning  Mismatch in @param names for function 'verify'. Expected: [proof, root, leaf], Found: []                            use-natspec
+943. [BoredApe] Solhint: 285:5   warning  Missing @return tag in function 'verify'                                                                            use-natspec
+944. [BoredApe] Solhint: 285:5   warning  Mismatch in @return count for function 'verify'. Expected: 1, Found: 0                                              use-natspec
+945. [BoredApe] Solhint: 289:5   warning  Missing @notice tag in function 'processProof'                                                                      use-natspec
+946. [BoredApe] Solhint: 289:5   warning  Missing @param tag in function 'processProof'                                                                       use-natspec
+947. [BoredApe] Solhint: 289:5   warning  Mismatch in @param names for function 'processProof'. Expected: [proof, leaf], Found: []                            use-natspec
+948. [BoredApe] Solhint: 289:5   warning  Missing @return tag in function 'processProof'                                                                      use-natspec
+949. [BoredApe] Solhint: 289:5   warning  Mismatch in @return count for function 'processProof'. Expected: 1, Found: 0                                        use-natspec
+950. [BoredApe] Solhint: 291:47  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+951. [BoredApe] Solhint: 297:5   warning  Missing @notice tag in function '_hashPair'                                                                         use-natspec
+952. [BoredApe] Solhint: 297:5   warning  Missing @param tag in function '_hashPair'                                                                          use-natspec
+953. [BoredApe] Solhint: 297:5   warning  Mismatch in @param names for function '_hashPair'. Expected: [a, b], Found: []                                      use-natspec
+954. [BoredApe] Solhint: 297:5   warning  Missing @return tag in function '_hashPair'                                                                         use-natspec
+955. [BoredApe] Solhint: 297:5   warning  Mismatch in @return count for function '_hashPair'. Expected: 1, Found: 0                                           use-natspec
+956. [BoredApe] Solhint: 303:1   warning  Missing @title tag in contract 'Counters'                                                                           use-natspec
+957. [BoredApe] Solhint: 303:1   warning  Missing @author tag in contract 'Counters'                                                                          use-natspec
+958. [BoredApe] Solhint: 303:1   warning  Missing @notice tag in contract 'Counters'                                                                          use-natspec
+959. [BoredApe] Solhint: 308:5   warning  Missing @notice tag in function 'current'                                                                           use-natspec
+960. [BoredApe] Solhint: 308:5   warning  Missing @param tag in function 'current'                                                                            use-natspec
+961. [BoredApe] Solhint: 308:5   warning  Mismatch in @param names for function 'current'. Expected: [counter], Found: []                                     use-natspec
+962. [BoredApe] Solhint: 308:5   warning  Missing @return tag in function 'current'                                                                           use-natspec
+963. [BoredApe] Solhint: 308:5   warning  Mismatch in @return count for function 'current'. Expected: 1, Found: 0                                             use-natspec
+964. [BoredApe] Solhint: 312:5   warning  Missing @notice tag in function 'increment'                                                                         use-natspec
+965. [BoredApe] Solhint: 312:5   warning  Missing @param tag in function 'increment'                                                                          use-natspec
+966. [BoredApe] Solhint: 312:5   warning  Mismatch in @param names for function 'increment'. Expected: [counter], Found: []                                   use-natspec
+967. [BoredApe] Solhint: 314:13  warning  GC: For [ counter ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                            gas-increment-by-one
+968. [BoredApe] Solhint: 320:1   warning  Missing @title tag in contract 'Strings'                                                                            use-natspec
+969. [BoredApe] Solhint: 320:1   warning  Missing @author tag in contract 'Strings'                                                                           use-natspec
+970. [BoredApe] Solhint: 320:1   warning  Missing @notice tag in contract 'Strings'                                                                           use-natspec
+971. [BoredApe] Solhint: 321:5   warning  Missing @notice tag in function 'toString'                                                                          use-natspec
+972. [BoredApe] Solhint: 321:5   warning  Missing @param tag in function 'toString'                                                                           use-natspec
+973. [BoredApe] Solhint: 321:5   warning  Mismatch in @param names for function 'toString'. Expected: [value], Found: []                                      use-natspec
+974. [BoredApe] Solhint: 321:5   warning  Missing @return tag in function 'toString'                                                                          use-natspec
+975. [BoredApe] Solhint: 321:5   warning  Mismatch in @return count for function 'toString'. Expected: 1, Found: 0                                            use-natspec
+976. [BoredApe] Solhint: 328:13  warning  GC: For [ digits ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                             gas-increment-by-one
+977. [BoredApe] Solhint: 333:13  warning  GC: For [ digits ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                             gas-increment-by-one
+978. [BoredApe] Solhint: 342:1   warning  Code contains empty blocks                                                                                          no-empty-blocks
+979. [BoredApe] Solhint: 342:1   warning  Missing @title tag in contract 'OwnableDelegateProxy'                                                               use-natspec
+980. [BoredApe] Solhint: 342:1   warning  Missing @author tag in contract 'OwnableDelegateProxy'                                                              use-natspec
+981. [BoredApe] Solhint: 342:1   warning  Missing @notice tag in contract 'OwnableDelegateProxy'                                                              use-natspec
+982. [BoredApe] Solhint: 344:1   warning  Missing @title tag in contract 'ProxyRegistry'                                                                      use-natspec
+983. [BoredApe] Solhint: 344:1   warning  Missing @author tag in contract 'ProxyRegistry'                                                                     use-natspec
+984. [BoredApe] Solhint: 344:1   warning  Missing @notice tag in contract 'ProxyRegistry'                                                                     use-natspec
+985. [BoredApe] Solhint: 345:5   warning  Missing @notice tag in variable 'proxies'                                                                           use-natspec
+986. [BoredApe] Solhint: 349:1   warning  Contract has 16 states declarations but allowed no more than 15                                                     max-states-count
+987. [BoredApe] Solhint: 349:1   warning  Missing @title tag in contract 'BoredApe'                                                                           use-natspec
+988. [BoredApe] Solhint: 349:1   warning  Missing @author tag in contract 'BoredApe'                                                                          use-natspec
+989. [BoredApe] Solhint: 349:1   warning  Missing @notice tag in contract 'BoredApe'                                                                          use-natspec
+990. [BoredApe] Solhint: 353:5   warning  Missing @notice tag in variable 'root'                                                                              use-natspec
+991. [BoredApe] Solhint: 354:5   warning  Missing @notice tag in variable 'proxyRegistryAddress'                                                              use-natspec
+992. [BoredApe] Solhint: 355:5   warning  Missing @notice tag in variable 'maxSupply'                                                                         use-natspec
+993. [BoredApe] Solhint: 356:5   warning  Missing @notice tag in variable 'baseURI'                                                                           use-natspec
+994. [BoredApe] Solhint: 357:5   warning  Missing @notice tag in variable 'notRevealedUri'                                                                    use-natspec
+995. [BoredApe] Solhint: 357:5   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+996. [BoredApe] Solhint: 358:5   warning  Missing @notice tag in variable 'baseExtension'                                                                     use-natspec
+997. [BoredApe] Solhint: 359:5   warning  Missing @notice tag in variable 'paused'                                                                            use-natspec
+998. [BoredApe] Solhint: 360:5   warning  Missing @notice tag in variable 'revealed'                                                                          use-natspec
+999. [BoredApe] Solhint: 361:5   warning  Missing @notice tag in variable 'presaleM'                                                                          use-natspec
+1000. [BoredApe] Solhint: 362:5   warning  Missing @notice tag in variable 'publicM'                                                                           use-natspec
+1001. [BoredApe] Solhint: 363:5   warning  Missing @notice tag in variable 'presaleAmountLimit'                                                                use-natspec
+1002. [BoredApe] Solhint: 364:5   warning  Missing @notice tag in variable '_presaleClaimed'                                                                   use-natspec
+1003. [BoredApe] Solhint: 365:5   warning  Missing @notice tag in variable '_price'                                                                            use-natspec
+1004. [BoredApe] Solhint: 375:5   warning  Missing @notice tag in function '<anonymous>'                                                                       use-natspec
+1005. [BoredApe] Solhint: 375:5   warning  Missing @param tag in function '<anonymous>'                                                                        use-natspec
+1006. [BoredApe] Solhint: 375:5   warning  Mismatch in @param names for function '<anonymous>'. Expected: [uri, merkleroot, _proxyRegistryAddress], Found: []  use-natspec
+1007. [BoredApe] Solhint: 385:5   warning  Missing @notice tag in function 'setBaseURI'                                                                        use-natspec
+1008. [BoredApe] Solhint: 385:5   warning  Missing @param tag in function 'setBaseURI'                                                                         use-natspec
+1009. [BoredApe] Solhint: 385:5   warning  Mismatch in @param names for function 'setBaseURI'. Expected: [_tokenBaseURI], Found: []                            use-natspec
+1010. [BoredApe] Solhint: 389:5   warning  Missing @notice tag in function '_baseURI'                                                                          use-natspec
+1011. [BoredApe] Solhint: 389:5   warning  Missing @return tag in function '_baseURI'                                                                          use-natspec
+1012. [BoredApe] Solhint: 389:5   warning  Mismatch in @return count for function '_baseURI'. Expected: 1, Found: 0                                            use-natspec
+1013. [BoredApe] Solhint: 393:5   warning  Missing @notice tag in function 'reveal'                                                                            use-natspec
+1014. [BoredApe] Solhint: 397:5   warning  Missing @notice tag in function 'setMerkleRoot'                                                                     use-natspec
+1015. [BoredApe] Solhint: 397:5   warning  Missing @param tag in function 'setMerkleRoot'                                                                      use-natspec
+1016. [BoredApe] Solhint: 397:5   warning  Mismatch in @param names for function 'setMerkleRoot'. Expected: [merkleroot], Found: []                            use-natspec
+1017. [BoredApe] Solhint: 402:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1018. [BoredApe] Solhint: 402:31  warning  Avoid to use tx.origin                                                                                              avoid-tx-origin
+1019. [BoredApe] Solhint: 407:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1020. [BoredApe] Solhint: 418:5   warning  Missing @notice tag in function 'togglePause'                                                                       use-natspec
+1021. [BoredApe] Solhint: 422:5   warning  Missing @notice tag in function 'togglePresale'                                                                     use-natspec
+1022. [BoredApe] Solhint: 426:5   warning  Missing @notice tag in function 'togglePublicSale'                                                                  use-natspec
+1023. [BoredApe] Solhint: 430:5   warning  Missing @notice tag in function 'presaleMint'                                                                       use-natspec
+1024. [BoredApe] Solhint: 430:5   warning  Missing @param tag in function 'presaleMint'                                                                        use-natspec
+1025. [BoredApe] Solhint: 430:5   warning  Mismatch in @param names for function 'presaleMint'. Expected: [account, _amount, _proof], Found: []                use-natspec
+1026. [BoredApe] Solhint: 436:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1027. [BoredApe] Solhint: 437:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1028. [BoredApe] Solhint: 438:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1029. [BoredApe] Solhint: 439:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1030. [BoredApe] Solhint: 440:9   warning  Error message for require is too long: 34 counted / 32 allowed                                                      reason-string
+1031. [BoredApe] Solhint: 440:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+1032. [BoredApe] Solhint: 440:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1033. [BoredApe] Solhint: 440:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1034. [BoredApe] Solhint: 441:9   warning  Error message for require is too long: 34 counted / 32 allowed                                                      reason-string
+1035. [BoredApe] Solhint: 441:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+1036. [BoredApe] Solhint: 441:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1037. [BoredApe] Solhint: 441:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1038. [BoredApe] Solhint: 442:9   warning  Error message for require is too long: 35 counted / 32 allowed                                                      reason-string
+1039. [BoredApe] Solhint: 442:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+1040. [BoredApe] Solhint: 442:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1041. [BoredApe] Solhint: 442:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1042. [BoredApe] Solhint: 445:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1043. [BoredApe] Solhint: 445:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1044. [BoredApe] Solhint: 448:42  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+1045. [BoredApe] Solhint: 453:5   warning  Missing @notice tag in function 'publicSaleMint'                                                                    use-natspec
+1046. [BoredApe] Solhint: 453:5   warning  Missing @param tag in function 'publicSaleMint'                                                                     use-natspec
+1047. [BoredApe] Solhint: 453:5   warning  Mismatch in @param names for function 'publicSaleMint'. Expected: [_amount], Found: []                              use-natspec
+1048. [BoredApe] Solhint: 458:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1049. [BoredApe] Solhint: 459:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1050. [BoredApe] Solhint: 460:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1051. [BoredApe] Solhint: 461:9   warning  Error message for require is too long: 35 counted / 32 allowed                                                      reason-string
+1052. [BoredApe] Solhint: 461:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+1053. [BoredApe] Solhint: 461:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1054. [BoredApe] Solhint: 461:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1055. [BoredApe] Solhint: 464:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1056. [BoredApe] Solhint: 464:17  warning  GC: Non strict inequality found. Try converting to a strict one                                                     gas-strict-inequalities
+1057. [BoredApe] Solhint: 466:42  warning  GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas                                  gas-increment-by-one
+1058. [BoredApe] Solhint: 471:5   warning  Missing @notice tag in function 'mintInternal'                                                                      use-natspec
+1059. [BoredApe] Solhint: 477:5   warning  Missing @notice tag in function 'tokenURI'                                                                          use-natspec
+1060. [BoredApe] Solhint: 477:5   warning  Missing @param tag in function 'tokenURI'                                                                           use-natspec
+1061. [BoredApe] Solhint: 477:5   warning  Mismatch in @param names for function 'tokenURI'. Expected: [tokenId], Found: []                                    use-natspec
+1062. [BoredApe] Solhint: 477:5   warning  Missing @return tag in function 'tokenURI'                                                                          use-natspec
+1063. [BoredApe] Solhint: 477:5   warning  Mismatch in @return count for function 'tokenURI'. Expected: 1, Found: 0                                            use-natspec
+1064. [BoredApe] Solhint: 484:9   warning  Error message for require is too long: 47 counted / 32 allowed                                                      reason-string
+1065. [BoredApe] Solhint: 484:9   warning  GC: String exceeds 32 bytes                                                                                         gas-small-strings
+1066. [BoredApe] Solhint: 484:9   warning  GC: Use Custom Errors instead of require statements                                                                 gas-custom-errors
+1067. [BoredApe] Solhint: 496:5   warning  Missing @notice tag in function 'setBaseExtension'                                                                  use-natspec
+1068. [BoredApe] Solhint: 496:5   warning  Missing @param tag in function 'setBaseExtension'                                                                   use-natspec
+1069. [BoredApe] Solhint: 496:5   warning  Mismatch in @param names for function 'setBaseExtension'. Expected: [_newBaseExtension], Found: []                  use-natspec
+1070. [BoredApe] Solhint: 500:5   warning  Missing @notice tag in function 'setNotRevealedURI'                                                                 use-natspec
+1071. [BoredApe] Solhint: 500:5   warning  Missing @param tag in function 'setNotRevealedURI'                                                                  use-natspec
+1072. [BoredApe] Solhint: 500:5   warning  Mismatch in @param names for function 'setNotRevealedURI'. Expected: [_notRevealedURI], Found: []                   use-natspec
+1073. [BoredApe] Solhint: 504:5   warning  Missing @notice tag in function 'totalSupply'                                                                       use-natspec
+1074. [BoredApe] Solhint: 504:5   warning  Missing @return tag in function 'totalSupply'                                                                       use-natspec
+1075. [BoredApe] Solhint: 504:5   warning  Mismatch in @return count for function 'totalSupply'. Expected: 1, Found: 0                                         use-natspec
+1076. [BoredApe] Solhint: 508:5   warning  Missing @notice tag in function 'isApprovedForAll'                                                                  use-natspec
+1077. [BoredApe] Solhint: 508:5   warning  Missing @param tag in function 'isApprovedForAll'                                                                   use-natspec
+1078. [BoredApe] Solhint: 508:5   warning  Mismatch in @param names for function 'isApprovedForAll'. Expected: [owner, operator], Found: []                    use-natspec
+1079. [BoredApe] Solhint: 508:5   warning  Missing @return tag in function 'isApprovedForAll'                                                                  use-natspec
+1080. [BoredApe] Solhint: 508:5   warning  Mismatch in @return count for function 'isApprovedForAll'. Expected: 1, Found: 0                                    use-natspec
+1081. [BoredApe] Solhint: ✖ 439 problems (0 errors, 439 warnings)
+1082. [Unknown] Slither: 'slither' is not recognized as an internal or external command,
+1083. [Unknown] Slither: operable program or batch file.
