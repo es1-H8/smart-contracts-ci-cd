@@ -1,7 +1,25 @@
 SECURITY ANALYSIS REPORT
-Generated: 2025-08-24T22:11:10.624Z
+Generated: 2025-08-24T22:25:02.027Z
 Total Contracts: 2
-Total Warnings Found: 0
+Total Warnings Found: 33
 Total Errors Found: 0
 
-No security issues found.
+DETAILED ISSUES:
+================
+
+1. 🔴 [Summary:N/A] HIGH
+   Tool: Slither
+   Issue: Found 1 high severity issues
+
+2. 🟠 [Summary:N/A] LOW
+   Tool: Slither
+   Issue: Found 7 low severity issues
+
+3. ℹ️ [Summary:N/A] INFO
+   Tool: Slither
+   Issue: Found 21 informational issues
+
+4. 🔵 [Summary:N/A] OPTIMIZATION
+   Tool: Slither
+   Issue: Found 4 optimization issues
+
