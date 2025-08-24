@@ -17,123 +17,132 @@ async function runSecurityChecks() {
   let totalErrors = 0;
   const allIssues = [];
   
-  // Run security checks for each contract
-  for (const contractFile of contractFiles) {
-    console.log(`\n🔍 Analyzing ${contractFile}...`);
-    console.log('='.repeat(50));
-    
-    const contractPath = path.join(contractsDir, contractFile);
-    const contractName = contractFile.replace('.sol', '');
-    
-    try {
-      // 1. Solhint (Linting)
-      console.log('\n📝 Running Solhint...');
-      try {
-        const solhintOutput = execSync(`npx solhint "${contractPath}"`, { encoding: 'utf8' });
-        console.log('✅ Solhint passed');
-      } catch (error) {
-        const solhintIssues = error.stdout || error.stderr || '';
-        const issues = solhintIssues.split('\n').filter(line => line.trim());
-        console.log(`⚠️ Solhint found ${issues.length} issues:`);
-        issues.forEach(issue => {
-          console.log(`   ${issue}`);
-          allIssues.push({ contract: contractName, tool: 'Solhint', issue });
-        });
-        totalWarnings += issues.length;
-      }
-      
-      // 2. Slither (Security Analysis)
-      console.log('\n🛡️ Running Slither...');
-      try {
-        const slitherOutput = execSync(`slither "${contractPath}" --print human-summary`, { encoding: 'utf8' });
-        console.log('✅ Slither passed');
-        
-        // Parse Slither output for issues even if it doesn't exit with error
-        if (slitherOutput.includes('High') || slitherOutput.includes('Medium') || slitherOutput.includes('Low')) {
-          const lines = slitherOutput.split('\n');
-          const issueLines = lines.filter(line => 
-            line.includes('High') || line.includes('Medium') || line.includes('Low') || 
-            line.includes('Warning') || line.includes('Info')
-          );
-          
-          if (issueLines.length > 0) {
-            console.log(`⚠️ Slither found ${issueLines.length} security issues:`);
-            issueLines.forEach(issue => {
-              if (issue.trim()) {
-                console.log(`   ${issue.trim()}`);
-                allIssues.push({ contract: contractName, tool: 'Slither', issue: issue.trim() });
-                totalWarnings++;
-              }
-            });
-          }
-        }
-      } catch (error) {
-        const slitherIssues = error.stdout || error.stderr || '';
-        const issues = slitherIssues.split('\n').filter(line => line.trim());
-        console.log(`⚠️ Slither found ${issues.length} issues:`);
-        issues.forEach(issue => {
-          console.log(`   ${issue}`);
-          allIssues.push({ contract: contractName, tool: 'Slither', issue });
-        });
-        totalWarnings += issues.length;
-      }
-      
-      // 3. Compiler Warnings
-      console.log('\n⚙️ Checking Compiler Warnings...');
-      try {
-        const compileOutput = execSync('npx hardhat compile', { encoding: 'utf8' });
-        if (compileOutput.includes('Warning') || compileOutput.includes('warning')) {
-          const warnings = compileOutput.split('\n').filter(line => 
-            line.toLowerCase().includes('warning') && line.includes(contractName)
-          );
-          console.log(`⚠️ Compiler found ${warnings.length} warnings:`);
-          warnings.forEach(warning => {
-            console.log(`   ${warning.trim()}`);
-            allIssues.push({ contract: contractName, tool: 'Compiler', issue: warning.trim() });
-            totalWarnings++;
+  // 1. Run Solhint on ALL contracts (like original CI workflow)
+  console.log('\n📝 Running Solhint on all contracts...');
+  console.log('='.repeat(50));
+  try {
+    const solhintOutput = execSync(`npx solhint "contracts/**/*.sol"`, { encoding: 'utf8' });
+    console.log('✅ Solhint passed');
+  } catch (error) {
+    const solhintIssues = error.stdout || error.stderr || '';
+    const issues = solhintIssues.split('\n').filter(line => line.trim());
+    console.log(`⚠️ Solhint found ${issues.length} issues:`);
+    issues.forEach(issue => {
+      if (issue.trim()) {
+        console.log(`   ${issue.trim()}`);
+        // Extract contract name and line number from Solhint output
+        const contractMatch = issue.match(/contracts\/([^#]+)#L(\d+)/);
+        if (contractMatch) {
+          const contractName = contractMatch[1].replace('.sol', '');
+          const lineNumber = contractMatch[2];
+          allIssues.push({ 
+            contract: contractName, 
+            tool: 'Solhint', 
+            issue: issue.trim(),
+            line: lineNumber
           });
         } else {
-          console.log('✅ No compiler warnings');
+          allIssues.push({ 
+            contract: 'Unknown', 
+            tool: 'Solhint', 
+            issue: issue.trim() 
+          });
         }
-      } catch (error) {
-        console.log('⚠️ Compilation issues found');
-        totalErrors++;
-      }
-      
-      // 4. Additional Security Checks
-      console.log('\n🔍 Running Additional Security Checks...');
-      
-      // Check for common vulnerabilities in the contract code
-      const contractContent = fs.readFileSync(contractPath, 'utf8');
-      
-      // Check for reentrancy vulnerabilities
-      if (contractContent.includes('call(') || contractContent.includes('delegatecall(')) {
-        const reentrancyIssue = 'Potential reentrancy vulnerability - external calls detected';
-        console.log(`   ⚠️ ${reentrancyIssue}`);
-        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: reentrancyIssue });
         totalWarnings++;
       }
+    });
+  }
+  
+  // 2. Run Slither on ALL contracts (like original CI workflow)
+  console.log('\n🛡️ Running Slither on all contracts...');
+  console.log('='.repeat(50));
+  try {
+    const slitherOutput = execSync(`slither . --print human-summary`, { encoding: 'utf8' });
+    console.log('✅ Slither passed');
+    
+    // Parse Slither output for issues even if it doesn't exit with error
+    if (slitherOutput.includes('High') || slitherOutput.includes('Medium') || slitherOutput.includes('Low')) {
+      const lines = slitherOutput.split('\n');
+      const issueLines = lines.filter(line => 
+        line.includes('High') || line.includes('Medium') || line.includes('Low') || 
+        line.includes('Warning') || line.includes('Info') || line.includes('GC:')
+      );
       
-      // Check for unsafe math operations
-      if (contractContent.includes('+') || contractContent.includes('-') || contractContent.includes('*') || contractContent.includes('/')) {
-        const mathIssue = 'Potential unsafe math operations - consider using SafeMath or Solidity 0.8+';
-        console.log(`   ⚠️ ${mathIssue}`);
-        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: mathIssue });
-        totalWarnings++;
+      if (issueLines.length > 0) {
+        console.log(`⚠️ Slither found ${issueLines.length} security issues:`);
+        issueLines.forEach(issue => {
+          if (issue.trim()) {
+            console.log(`   ${issue.trim()}`);
+            // Try to extract contract name from Slither output
+            let contractName = 'Unknown';
+            if (issue.includes('contracts/')) {
+              const contractMatch = issue.match(/contracts\/([^#]+)/);
+              if (contractMatch) {
+                contractName = contractMatch[1].replace('.sol', '');
+              }
+            }
+            allIssues.push({ 
+              contract: contractName, 
+              tool: 'Slither', 
+              issue: issue.trim() 
+            });
+            totalWarnings++;
+          }
+        });
       }
-      
-      // Check for access control issues
-      if (contractContent.includes('onlyOwner') && !contractContent.includes('Ownable')) {
-        const accessIssue = 'Access control modifier used but Ownable contract not imported';
-        console.log(`   ⚠️ ${accessIssue}`);
-        allIssues.push({ contract: contractName, tool: 'Manual Check', issue: accessIssue });
-        totalWarnings++;
-      }
-      
-    } catch (error) {
-      console.log(`❌ Error analyzing ${contractFile}: ${error.message}`);
-      totalErrors++;
     }
+  } catch (error) {
+    const slitherIssues = error.stdout || error.stderr || '';
+    const issues = slitherIssues.split('\n').filter(line => line.trim());
+    console.log(`⚠️ Slither found ${issues.length} issues:`);
+    issues.forEach(issue => {
+      if (issue.trim()) {
+        console.log(`   ${issue.trim()}`);
+        // Try to extract contract name from Slither output
+        let contractName = 'Unknown';
+        if (issue.includes('contracts/')) {
+          const contractMatch = issue.match(/contracts\/([^#]+)/);
+          if (contractMatch) {
+            contractName = contractMatch[1].replace('.sol', '');
+          }
+        }
+        allIssues.push({ 
+          contract: contractName, 
+          tool: 'Slither', 
+          issue: issue.trim() 
+        });
+        totalWarnings++;
+      }
+    });
+  }
+  
+  // 3. Compiler Warnings
+  console.log('\n⚙️ Checking Compiler Warnings...');
+  console.log('='.repeat(50));
+  try {
+    const compileOutput = execSync('npx hardhat compile', { encoding: 'utf8' });
+    if (compileOutput.includes('Warning') || compileOutput.includes('warning')) {
+      const warnings = compileOutput.split('\n').filter(line => 
+        line.toLowerCase().includes('warning')
+      );
+      console.log(`⚠️ Compiler found ${warnings.length} warnings:`);
+      warnings.forEach(warning => {
+        if (warning.trim()) {
+          console.log(`   ${warning.trim()}`);
+          allIssues.push({ 
+            contract: 'Compiler', 
+            tool: 'Hardhat', 
+            issue: warning.trim() 
+          });
+          totalWarnings++;
+        }
+      });
+    } else {
+      console.log('✅ No compiler warnings');
+    }
+  } catch (error) {
+    console.log('⚠️ Compilation issues found');
+    totalErrors++;
   }
   
   // Generate comprehensive security report
@@ -150,11 +159,12 @@ async function runSecurityChecks() {
   let reportContent = `SECURITY ANALYSIS REPORT\n`;
   reportContent += `Generated: ${new Date().toISOString()}\n`;
   reportContent += `Total Contracts: ${contractFiles.length}\n`;
-  reportContent += `Total Warnings: ${totalWarnings}\n`;
-  reportContent += `Total Errors: ${totalErrors}\n\n`;
+  reportContent += `Total Warnings Found: ${totalWarnings}\n`;
+  reportContent += `Total Errors Found: ${totalErrors}\n\n`;
   
   allIssues.forEach((issue, index) => {
-    reportContent += `${index + 1}. [${issue.contract}] ${issue.tool}: ${issue.issue}\n`;
+    const lineInfo = issue.line ? ` (Line ${issue.line})` : '';
+    reportContent += `${index + 1}. [${issue.contract}] ${issue.tool}: ${issue.issue}${lineInfo}\n`;
   });
   
   fs.writeFileSync(reportPath, reportContent);
@@ -165,7 +175,8 @@ async function runSecurityChecks() {
     console.log('\n🚨 ALL SECURITY ISSUES FOUND:');
     console.log('='.repeat(60));
     allIssues.forEach((issue, index) => {
-      console.log(`${index + 1}. [${issue.contract}] ${issue.tool}: ${issue.issue}`);
+      const lineInfo = issue.line ? ` (Line ${issue.line})` : '';
+      console.log(`${index + 1}. [${issue.contract}] ${issue.tool}: ${issue.issue}${lineInfo}`);
     });
   }
   

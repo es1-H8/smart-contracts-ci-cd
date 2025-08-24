@@ -49,42 +49,13 @@ jobs:
       - name: Install Solhint
         run: npm install -g solhint
 
+      - name: Run Solhint linting
+        run: npx solhint "contracts/**/*.sol"
+
       - name: Install Slither
         run: |
           pip install slither-analyzer
-
-      - name: Run Enhanced Security Analysis
-        run: |
-          echo "🔒 Starting Enhanced Security Analysis..."
-          echo "This will show ALL warnings from ALL contracts (no 10 limit)"
-          
-          # Run our dedicated security script that captures all warnings
-          node scripts/security-only.js || true
-          
-          echo "📊 Security Analysis Complete!"
-          echo "Check the logs above for ALL warnings found"
-
-      - name: Upload Security Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: security-report
-          path: security-report.txt
-
-      - name: Display Security Summary
-        if: always()
-        run: |
-          echo "🔒 SECURITY ANALYSIS SUMMARY"
-          echo "================================"
-          if [ -f security-report.txt ]; then
-            echo "📄 Full security report available in artifacts"
-            echo "📊 Summary:"
-            head -30 security-report.txt
-            echo ""
-            echo "Total warnings found: $(grep -c "\[.*\]" security-report.txt || echo "0")"
-          else
-            echo "✅ No security report generated"
-          fi
+          slither . --print human-summary
 
   deploy:
     runs-on: ubuntu-latest
