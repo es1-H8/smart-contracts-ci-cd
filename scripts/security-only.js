@@ -22,11 +22,18 @@ async function runSecurityChecks() {
   try {
     // First check if slither is available
     try {
-      execSync('py -m slither --version', { stdio: 'ignore' });
+      // Detect environment and use appropriate Python command
+      const isWindows = process.platform === 'win32';
+      const pythonCommand = isWindows ? 'py -m slither' : 'python -m slither';
+      
+      console.log(`Environment: ${isWindows ? 'Windows' : 'Linux/Unix'}`);
+      console.log(`Using command: ${pythonCommand}`);
+      
+      execSync(`${pythonCommand} --version`, { stdio: 'ignore' });
       console.log('✅ Slither is available');
     } catch (error) {
       console.log('❌ Slither is not installed or not available in PATH');
-      console.log('💡 To install Slither: py -m pip install slither-analyzer');
+      console.log('💡 To install Slither: pip install slither-analyzer');
       
       allIssues.push({
         contract: 'System',
@@ -49,8 +56,12 @@ async function runSecurityChecks() {
     let slitherExitCode = 0;
     
     try {
+      // Detect environment and use appropriate Python command
+      const isWindows = process.platform === 'win32';
+      const pythonCommand = isWindows ? 'py -m slither' : 'python -m slither';
+      
       // Try to run Slither normally
-      slitherOutput = execSync('py -m slither . --checklist', { 
+      slitherOutput = execSync(`${pythonCommand} . --checklist`, { 
         encoding: 'utf8',
         timeout: 60000 // 60 second timeout
       });
