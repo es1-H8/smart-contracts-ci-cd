@@ -44,7 +44,90 @@ async function runSecurityChecks() {
     
     // Run Slither with JSON output for better parsing
     console.log('Running Slither analysis...');
-    const slitherOutput = execSync(`slither . --json -`, { encoding: 'utf8' });
+    
+    // Check if we're in a CI environment
+    const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+    console.log(`Environment: ${isCI ? 'CI/GitHub Actions' : 'Local Development'}`);
+    
+    let slitherOutput;
+    try {
+      // Try the standard JSON output first
+      console.log('Trying: slither . --json');
+      slitherOutput = execSync(`slither . --json`, { encoding: 'utf8' });
+      console.log('✅ JSON output successful');
+    } catch (jsonError) {
+      console.log('⚠️ Standard JSON output failed, trying alternative format...');
+      console.log('JSON error:', jsonError.message);
+      try {
+        // Fallback: try with human-readable output and parse it
+        console.log('Trying: slither . --print human-summary');
+        slitherOutput = execSync(`slither . --print human-summary`, { encoding: 'utf8' });
+        console.log('✅ Human-readable output successful');
+        
+        // Convert human output to a structured format
+        const humanResults = {
+          results: {
+            detectors: []
+          }
+        };
+        
+        // Parse human-readable output for basic issues
+        const lines = slitherOutput.split('\n');
+        let currentIssue = null;
+        
+        lines.forEach(line => {
+          if (line.includes('High:') || line.includes('Medium:') || line.includes('Low:') || line.includes('Optimization:')) {
+            const severity = line.split(':')[0].trim();
+            const count = parseInt(line.split(':')[1]) || 0;
+            
+            if (count > 0) {
+              // Add placeholder detector for this severity level
+              humanResults.results.detectors.push({
+                impact: severity,
+                description: `${severity} level issues found`,
+                elements: [{
+                  source_mapping: {
+                    filename_relative: 'contracts/',
+                    lines: [0]
+                  }
+                }],
+                check: 'human-summary',
+                confidence: 'Medium'
+              });
+            }
+          }
+        });
+        
+        slitherOutput = JSON.stringify(humanResults);
+        
+      } catch (humanError) {
+        console.log('❌ Both JSON and human-readable output failed');
+        console.log('Human error:', humanError.message);
+        
+        // In CI, we want to fail hard; locally, we can be more lenient
+        if (isCI) {
+          throw new Error(`Slither execution failed in CI environment: ${humanError.message}`);
+        } else {
+          console.log('⚠️ Continuing with minimal analysis for local development...');
+          slitherOutput = JSON.stringify({
+            results: {
+              detectors: [{
+                impact: 'Informational',
+                description: 'Slither analysis failed, but continuing with basic checks',
+                elements: [{
+                  source_mapping: {
+                    filename_relative: 'contracts/',
+                    lines: [0]
+                  }
+                }],
+                check: 'fallback',
+                confidence: 'Low'
+              }]
+            }
+          });
+        }
+      }
+    }
     
     // Parse JSON output
     try {
